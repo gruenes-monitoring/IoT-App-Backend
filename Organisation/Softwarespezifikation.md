@@ -1,10 +1,24 @@
 # Anforderungs- und Entwurfsspezifikation ("Pflichtenheft")
 
-* Titel, Autoren, Inhaltsverzeichnis
-* Link zum Source Code Repository
+* Titel
+
+* Inhaltsverzeichnis
+
+* Autoren
+
+  * Jonas Raddatz
+  * André Matutat
+  * Daniel Räder
+  * Dejan Novakovic
+
+* Software Repo
+
+  * [Backend Repo](<https://github.com/jraddatz/IoT-App-Backend>)
+
+  
 
 
-# 1 Einfьhrung
+# 1 Einführung
 
 ## 1.1 Beschreibung
 
@@ -22,18 +36,11 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ## 2.1 Stakeholder
 
-| Funktion | Name | Kontakt | Verfьgbarkeit | Wissen  | Interesse & Ziele  | Relevanz  |
-|---|---|---|---|---|---|---|
-|  |   |   |   |   |   |   |
+| Funktion | Name | Kontakt | Verfügbarkeit | Wissen | Interesse & Ziele | Relevanz |
+| -------- | ---- | ------- | ------------- | ------ | ----------------- | -------- |
+| Administrator | Herr. Router | 127.0.0.1 | 60% | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System. | Hoch |
+| Benutzer | Frau Dr. Blume | 0800 Nase | 70% | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Intigrität | Sehr Hoch |
 
-
-### Beispiel
-
-| Funktion | Name | Kontakt | Verfьgbarkeit | Wissen  | Interesse & Ziele  | Relevanz  |
-|---|---|---|---|---|---|---|
-| Leiter der Bibliothek  |  Herr Bauer | Tel. 409000  | Von 9-19 Uhr telefonisch erreichbar, Mitarbeit zu 30% mцglich, Nьrnberg  | Kennt das Altsystem aus der Anwendersicht, soll mit dem System arbeiten  | Vereinfachung der Ausleihprozesse  | Fachlicher Entscheider  |
-| Administrator  | Herr Heiner  | Heiner@gmx.net  | Per E-Mail, immer erreichbar, Verfьgbarkeit 50%, Nьrnberg  | Vertraut mit vergleichbarer Verwaltungssoftware   |  Stabiles System, geringer Wartungsaufwand | Informationslieferant bzgl. Wartungsanforderungen  |
-| Product-Owner  | Paul Ottmer  |  po@ottmer.de | Per E-Mail und tel. tagsьber, Verfьgbarkeit 100%, Nьrnberg  | Koordinator fьr die Inputs der Stakeholder  | ROI des Systems sicherstellen  | Entscheider - als Koordinator der Stakeholderanforderungen  |
 
 ## 2.2 Funktionale Anforderungen
     - Use-Case Diagramme
@@ -47,30 +54,28 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 ### 2.3.2 Betriebsbedingungen
     - Vorgaben des Kunden (z.B. Web Browser / Betriebssystem Versionen, Programmiersprache)
 
-### 2.3.3 Qualitдtsmerkmale
-    - Externe Qualitдtsanforderungen (z.B. Performance, Sicherheit, Zuverlдssigkeit, Benutzerfreundlichkeit)
-
-Qualitдtsmerkmal | sehr gut | gut | normal | nicht relevant
----|---|---|---|---
-**Zuverlдssigkeit** | | | | |
-Fehlertoleranz |X|-|-|-|
-Wiederherstellbarkeit |X|-|-|-|
-Ordnungsmдяigkeit |X|-|-|-|
-Richtigkeit |X|-|-|-|
-Konformitдt |-|X|-|-|
-**Benutzerfreundlichkeit** | | | | |
-Installierbarkeit |-|-|X|-|
-Verstдndlichkeit |X|-|-|-|
-Erlernbarkeit |-|X|-|-|
-Bedienbarkeit |-|X|-|-|
-**Performance** | | | | |
-Zeitverhalten |-|-|X|-|
-Effizienz|-|-|-|X|
-**Sicherheit** | | | | |
-Analysierbarkeit |X|-|-|-|
-Modifizierbarkeit |-|-|-|X|
-Stabilitдt |X|-|-|-|
-Prьfbarkeit |X|-|-|-|
+### 2.3.3 Qualitätsmerkmale
+| Qualitätsmerkmal           | sehr gut | gut  | normal | nicht relevant |
+| -------------------------- | -------- | ---- | ------ | -------------- |
+| **Zuverlässigkeit**        |          |      |        |                |
+| Fehlertoleranz             | -        | X    | -      | -              |
+| Wiederherstellbarkeit      | -        | X    | -      | -              |
+| Ordnungsmäßigkeit          | X        | -    | -      | -              |
+| Richtigkeit                | X        | -    | -      | -              |
+| Konformität                | X        | -    | -      | -              |
+| **Benutzerfreundlichkeit** |          |      |        |                |
+| Installierbarkeit          | -        | -    | x      | -              |
+| Verständlichkeit           | X        | -    | -      | -              |
+| Erlernbarkeit              | X        | -    | -      | -              |
+| Bedienbarkeit              | X        | -    | -      | -              |
+| **Performance**            |          |      |        |                |
+| Zeitverhalten              | -        | -    | X      | -              |
+| Effizienz                  | -        | -    | X      | -              |
+| **Sicherheit**             |          |      |        |                |
+| Analysierbarkeit           | X        | -    | -      | -              |
+| Modifizierbarkeit          | -        | X    | -      | -              |
+| Stabilität                 | -        | -    | X      | -              |
+| Prüfbarkeit                | -        | -    | X      | -              |
 
 ## 2.4 Graphische Benutzerschnittstelle
     - GUI-Mockups passend zu User Stories
@@ -79,32 +84,27 @@ Prьfbarkeit |X|-|-|-|
     - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
 
 ## 2.5 Anforderungen im Detail
-    - User Stories mit Akzeptanzkritierien 
-    - Optional: Name (oder ID) und Prioritдt ("Must", "Should", "Could", "Won't")
-    - Strukturierung der User Stories in funktionale Gruppen
 
-### Schablone fьr User Stories
 
-| **Als** | **mцchte ich** | **so dass** | **Akzeptanz** |
-| :------ | :----- | :------ | :-------- |
-| Wer | Was | Warum | Wann akzeptiert |
+| **Als**  | **möchte ich**               | **so dass**                         | **Akzeptanz**                |
+| :------- | :--------------------------- | :---------------------------------- | :--------------------------- |
+| Benutzer | Messdaten angezeigt bekommen | ich die Informationen einsehen kann | Messdaten werden Dargestellt |
+|Benutzer|Messdaten für spezielle Räume auswählen|ich Informationen über diese Räume erhalte|Raumauswahl ist möglich|
+|Benutzer|Messdaten für spezielle Zeiten auwählen|ich Informationen über diese Zeiten erhalte| Zeitauswahl ist möglich                                      |
+|Administrator|Geräte den System hinzufügen|dieses Gerät auch Messungen durchführt|Hinzufügen von Geräten per Weboberfläche möglich|
+|Administrator|den Status der Geräte Einblicken können|ich Defekte Geräte erkenne|Statusanzeige der Geräte auf der Weboberfläche implementiert|
+|||||
+|||||
+|||||
+|||||
+|||||
+|||||
 
-### Beispiel 1
-
-| **Als** | **mцchte ich** | **so dass** | **Akzeptanz** |
-| :------ | :----- | :------ | :-------- |
-| Benutzer | bei Fehleingabe die Lцsung angezeigt bekommen | ich lernen kann | Lцsung wird angezeigt |
-
-### Beispiel 2
-
-| **Name**| **In meiner Rolle als**...|   ...**mцchte ich**...   | ..., **so dass**... | **Erfьllt, wenn**... | **Prioritдt**   |
-|:-----|:----------:|:-------------------|:-------------|:---------|:----------------|
-| Lernen  |Benutzer| bei Fehleingabe die Lцsung angezeigt bekommen|ich lernen kann| Lцsung wird angezeigt | Muss |
 
 
 # 3 Technische Beschreibung
 
-## 3.1 Systemьbersicht
+## 3.1 Systemübersicht
     - Systemarchitekturdiagramm ("Box-And-Arrow" Diagramm)
     - Kommunikationsprotokolle, Datenformate
 
@@ -120,7 +120,7 @@ Prьfbarkeit |X|-|-|-|
     - Modellierung des physikalischen Datenmodells 
       - RDBMS: ER-Diagramm bzw. Dokumentenorientiert: JSON-Schema
 
-## 3.5 Ablдufe
+## 3.5 Abläufe
     - Aktivitдtsdiagramme fьr relevante Use Cases
     - Aktivitдtsdiagramm fьr den Ablauf sдmtlicher Use Cases
 
@@ -130,6 +130,7 @@ Prьfbarkeit |X|-|-|-|
 # 4 Projektorganisation
 
 ## 4.1 Annahmen
+
     - Nicht durch den Kunden definierte spezifische Annahmen, Anforderungen und Abhдngigkeiten
     - Verwendete Technologien (Programmiersprache, Frameworks, etc.)
     - Aufteilung in Git-Repositories gemдя Software- und Systemarchitektur und Softwarebbausteinen 
@@ -140,43 +141,40 @@ Prьfbarkeit |X|-|-|-|
     - Zuordnung von Personen zu Softwarebausteinen aus Kapitel 3.1 und 3.2
     - Rollendefinition und Zuordnung
 
-| Softwarebaustein | Person(en) |
-|----------|-----------|
-| Komponente A | Thomas Mustermann |
-
-### Rollen
-
-#### Softwarearchitekt
-Entwirft den Aufbau von Softwaresystemen und trifft Entscheidungen ьber das Zusammenspiel der Softwarebausteine.
-
-#### Frontend-Entwickler
-Entwickelt graphische oder andere Benutzerschnittstellen, insbesondere das Layout einer Anwendung.
-
-#### Backend-Entwickler
-Implementiert die funktionale Logik der Anwendung. Hierbei werden zudem diverse Datenquellen und externe Dienste integriert und fьr die Anwendung bereitgestellt.
+| Softwarebaustein | Person(en)        |
+| ---------------- | ----------------- |
+| Komponente A     | Thomas Mustermann |
 
 ### Rollenzuordnung
 
-| Name     | Rolle     |
-|----------|-----------|
-| Thomas Mustermann | Softwarearchitekt |
+| Name          | Rolle              |
+| ------------- | ------------------ |
+| André Matutat | Backend-Entwickler, Softwarearchitekt |
+| Jonas Raddatz   | Backend-Entwickler, Softwarearchitekt |
+|Dejan Novakovic|Frontend-Entwickler|
+|Daniel Räder|Frontend-Entwickler|
+|||
+
 
 
 ## 4.3 Grober Projektplan
-    - Meilensteine
 
 ### Meilensteine
-* KW 43 (21.10)
-  * Abgabe Pflichtenheft
-* KW 44 (28.10) / Projekt aufsetzen
-  * Repository Struktur
-* KW 45 (4.11) / Implementierung
-  * Implementierung #3 (Final)
-* KW 48 (18.12) / Abnahmetests
-  * manuelle Abnahmetestss
-  * Prдsentation / Software-Demo
 
-# 5 Anhдnge
+- 30.04
+  - Projektplan Fertiggestellt
+- 14.04
+  - Datenbank aufgesetzt
+  - Hardware eingerichtet
+- 21.04 
+  - Backend implementiert
+  - Frontend implementiert
+
+* 28.05
+  * Prototyp Fertiggestellt
+* 
+
+# 5 Anhänge
 
 ## 5.1 Glossar 
     - Definitionen, Abkьrzungen, Begriffe
@@ -185,6 +183,3 @@ Implementiert die funktionale Logik der Anwendung. Hierbei werden zudem diverse 
     - Handbьcher, Gesetze
 
 ## 5.3 Index
-
-
-
