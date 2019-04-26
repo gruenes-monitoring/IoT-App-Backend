@@ -128,7 +128,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ### ERD
 
-![](./img/datenbank.png)
+![](./img/Datenbank.png)
 
     - Konzeptionelles Analyseklassendiagramm (logische Darstellung der Konzepte der Anwendungsdomдne)
     - Modellierung des physikalischen Datenmodells 
