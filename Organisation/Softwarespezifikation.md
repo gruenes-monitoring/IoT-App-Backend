@@ -10,7 +10,7 @@
   * André Matutat
   * Daniel Räder
   * Dejan Novakovic
-  * Simon Afaik
+  * Simon Safar
 
 * Software Repo
 
@@ -170,7 +170,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 | Jonas Raddatz   | Backend-Entwickler, Softwarearchitekt |
 |Dejan Novakovic|Frontend-Entwickler|
 |Daniel Räder|Frontend-Entwickler|
-|Simon Afaik|Frontend-Entwickler|
+|Simon Safar|Frontend-Entwickler|
 
 
 
