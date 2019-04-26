@@ -1,8 +1,8 @@
 # Anforderungs- und Entwurfsspezifikation ("Pflichtenheft")
 
-* Titel
+* Wetterstation
 
-* Inhaltsverzeichnis
+* !!Inhaltsverzeichnis!!
 
 * Autoren
 
@@ -10,6 +10,7 @@
   * André Matutat
   * Daniel Räder
   * Dejan Novakovic
+  * Simon Afaik
 
 * Software Repo
 
@@ -41,18 +42,24 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 | Administrator | Herr. Router | 127.0.0.1 | 60% | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System. | Hoch |
 | Benutzer | Frau Dr. Blume | 0800 Nase | 70% | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Intigrität | Sehr Hoch |
 
-
 ## 2.2 Funktionale Anforderungen
-    - Use-Case Diagramme
-    - Strukturierung der Diagramme in funktionale Gruppen
+
+### Use-Case Diagramm
+
+![](./img/ucd.png)
 
 ## 2.3 Nicht-funktionale Anforderungen 
 
 ### 2.3.1 Rahmenbedingungen
-    - Normen, Standards, Protokolle, Hardware, externe Vorgaben
+
+- Die Messungen sollen mithilfe eines Raspberry Pi getätigt werden.
+- Die Daten sollen in einer Datenbank gespeichert werden
 
 ### 2.3.2 Betriebsbedingungen
-    - Vorgaben des Kunden (z.B. Web Browser / Betriebssystem Versionen, Programmiersprache)
+
+- Google Chrome Version 73.0.3683.103 
+- Android 6.0
+- SQL Datenbank
 
 ### 2.3.3 Qualitätsmerkmale
 | Qualitätsmerkmal           | sehr gut | gut  | normal | nicht relevant |
@@ -89,10 +96,10 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 | **Als**  | **möchte ich**               | **so dass**                         | **Akzeptanz**                |
 | :------- | :--------------------------- | :---------------------------------- | :--------------------------- |
 | Benutzer | Messdaten angezeigt bekommen | ich die Informationen einsehen kann | Messdaten werden Dargestellt |
-|Benutzer|Messdaten für spezielle Räume auswählen|ich Informationen über diese Räume erhalte|Raumauswahl ist möglich|
+|Benutzer|eine Ortsauswahl in beliebiger Genauigkeit treffen|ich die Messdaten für spezielle Orte einsehen kann|Gebäude, Stockwerk und Raumauswahl ist möglich|
 |Benutzer|Messdaten für spezielle Zeiten auwählen|ich Informationen über diese Zeiten erhalte| Zeitauswahl ist möglich                                      |
 |Administrator|Geräte den System hinzufügen|dieses Gerät auch Messungen durchführt|Hinzufügen von Geräten per Weboberfläche möglich|
-|Administrator|den Status der Geräte Einblicken können|ich Defekte Geräte erkenne|Statusanzeige der Geräte auf der Weboberfläche implementiert|
+|Administrator|den Status der Geräte Einblicken können|ich defekte Geräte erkenne|Statusanzeige der Geräte auf der Weboberfläche implementiert|
 |||||
 |||||
 |||||
@@ -105,6 +112,8 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 # 3 Technische Beschreibung
 
 ## 3.1 Systemübersicht
+
+
     - Systemarchitekturdiagramm ("Box-And-Arrow" Diagramm)
     - Kommunikationsprotokolle, Datenformate
 
@@ -116,12 +125,20 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
     - Auflistung der nach auяen sichtbaren Schnittstelle der Softwarebausteine
 
 ## 3.4 Datenmodell 
+
+### ERD
+
+![](./img/datenbank.png)
+
     - Konzeptionelles Analyseklassendiagramm (logische Darstellung der Konzepte der Anwendungsdomдne)
     - Modellierung des physikalischen Datenmodells 
       - RDBMS: ER-Diagramm bzw. Dokumentenorientiert: JSON-Schema
 
 ## 3.5 Abläufe
-    - Aktivitдtsdiagramme fьr relevante Use Cases
+
+![](./img/mdead.png)
+
+    - Aktivitätsdiagramme fьr relevante Use Cases
     - Aktivitдtsdiagramm fьr den Ablauf sдmtlicher Use Cases
 
 ## 3.6 Entwurf
@@ -153,7 +170,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 | Jonas Raddatz   | Backend-Entwickler, Softwarearchitekt |
 |Dejan Novakovic|Frontend-Entwickler|
 |Daniel Räder|Frontend-Entwickler|
-|||
+|Simon Afaik|Frontend-Entwickler|
 
 
 
@@ -162,17 +179,29 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 ### Meilensteine
 
 - 30.04
-  - Projektplan Fertiggestellt
-- 14.04
+  - Mockups
+  - User Stories
+  - Use-Cases
+  - Architektur Diagramme
+  - Grobe Projektplanung
+- 14.05 
   - Datenbank aufgesetzt
-  - Hardware eingerichtet
-- 21.04 
   - Backend implementiert
   - Frontend implementiert
+- 21.05 
+  - Prototyp getestet und verbessert
 
 * 28.05
-  * Prototyp Fertiggestellt
-* 
+  * Prototyp Präsentieren
+* 18.06
+  * CD eingerichtet
+  * Hardware eingerichtet
+  * Backend fertiggestellt
+  * Frontend fertiggestellt
+* 25.06
+  * Akzeptanztests bestanden
+* 02.07
+  * Projektpräsentation
 
 # 5 Anhänge
 
