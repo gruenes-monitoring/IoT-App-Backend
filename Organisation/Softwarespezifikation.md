@@ -89,11 +89,10 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
     - Screens mit №berschrift kennzeichnen, die im Inhaltsverzeichnis zu sehen ist
     - Unter den Screens darstellen (bzw. verlinken), welche User Stories mit dem Screen abgehandelt werden
     - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
-    ./img/mockups/desktop/all_buildings.png
     
-<img src="./img/mockups/desktop/all_buildings.png" width="400">
-<img src="./img/mockups/desktop/one_building_small.png" width="400">
-<img src="./img/mockups/desktop/one_building_one_room.png" width="400">
+<img src="./img/mockups/desktop/all_buildings.png" width="500">
+<img src="./img/mockups/desktop/one_building_small.png" width="500">
+<img src="./img/mockups/desktop/one_building_one_room.png" width="500">
 
 ## 2.5 Anforderungen im Detail
 
