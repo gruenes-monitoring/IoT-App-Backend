@@ -39,7 +39,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 | Funktion | Name | Kontakt | Verfügbarkeit | Wissen | Interesse & Ziele | Relevanz |
 | -------- | ---- | ------- | ------------- | ------ | ----------------- | -------- |
-| Administrator | Herr. Router | 127.0.0.1 |400% | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System. | Hoch |
+| Administrator | Herr. Router | 127.0.0.1 | 60% | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System. | Hoch |
 | Benutzer | Frau Dr. Blume | 0800 Nase | 70% | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Intigrität | Sehr Hoch |
 
 ## 2.2 Funktionale Anforderungen
