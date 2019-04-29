@@ -90,7 +90,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
     - Screens mit №berschrift kennzeichnen, die im Inhaltsverzeichnis zu sehen ist
     - Unter den Screens darstellen (bzw. verlinken), welche User Stories mit dem Screen abgehandelt werden
     - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
-    
+
 <img src="./img/mockups/desktop/all_buildings.png" width="500">
 <img src="./img/mockups/desktop/one_building_small.png" width="500">
 <img src="./img/mockups/desktop/one_building_one_room.png" width="500">
@@ -122,10 +122,18 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
     - Systemarchitekturdiagramm ("Box-And-Arrow" Diagramm)
     - Kommunikationsprotokolle, Datenformate
 
+### Systemarchitektur
+
+![](./img/Systemarchitektur.png)
+
 ## 3.2 Softwarearchitektur
+
     - Darstellung von Softwarebausteinen (Module, Schichten, Komponenten)
 
+![](./img/Softwarearchitektur.png)
+
 ## 3.3 Schnittstellen
+
     - Schnittstellenbeschreibung
     - Auflistung der nach auяen sichtbaren Schnittstelle der Softwarebausteine
 
