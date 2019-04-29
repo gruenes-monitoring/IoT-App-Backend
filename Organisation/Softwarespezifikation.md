@@ -16,7 +16,7 @@
 
   * [Backend Repo](<https://github.com/jraddatz/IoT-App-Backend>)
   * [WebFrontend Repo](<https://github.com/FranNk3/IoT-App-WebFrontend>)
-
+  * [MobileFrontend Repo](<https://github.com/ChamounInfo/IoT-App-MobileFrontend>)
   
 
 
@@ -94,6 +94,10 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 <img src="./img/mockups/desktop/all_buildings.png" width="500">
 <img src="./img/mockups/desktop/one_building_small.png" width="500">
 <img src="./img/mockups/desktop/one_building_one_room.png" width="500">
+
+<img src="./img/mockups/mobile/many_rooms.png">
+<img src="./img/mockups/mobile/one_room.png">
+<img src="./img/mockups/mobile/table.png">
 
 ## 2.5 Anforderungen im Detail
 
