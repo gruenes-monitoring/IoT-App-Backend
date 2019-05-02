@@ -40,8 +40,9 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 | Funktion | Name | Kontakt | Verfügbarkeit | Wissen | Interesse & Ziele | Relevanz |
 | -------- | ---- | ------- | ------------- | ------ | ----------------- | -------- |
-| Administrator | Herr. Router | 127.0.0.1 | 60% | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System. | Hoch |
-| Benutzer | Frau Dr. Blume | 0800 Nase | 70% | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Intigrität | Sehr Hoch |
+| Administrator | Herr Router | 127.0.0.1 | 60% | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System. | Hoch |
+| Benutzer | Frau Dr. Raum-Klima | 0800 Nase | 70% | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Intigrität | Sehr Hoch |
+| Benutzer | Thomas Müller | tmueller14@fh-bielefeld.cz | 20% | Wenig. | Daten sollen auch für ihn als Laien übersichtlich dargestellt werden. | Mittel |
 
 ## 2.2 Funktionale Anforderungen
 
@@ -58,9 +59,10 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ### 2.3.2 Betriebsbedingungen
 
-- Google Chrome Version 73.0.3683.103 
-- Android 6.0
-- SQL Datenbank
+- Webclient:
+  - Mozilla Firefox mind. 66.0.0
+- Mobile:
+  - Android mind. 6.0 oder iOS mind. 9
 
 ### 2.3.3 Qualitätsmerkmale
 | Qualitätsmerkmal           | sehr gut | gut  | normal | nicht relevant |
@@ -91,9 +93,14 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
     - Unter den Screens darstellen (bzw. verlinken), welche User Stories mit dem Screen abgehandelt werden
     - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
 
+### Web Frontend
+
 <img src="./img/mockups/desktop/all_buildings.png" width="500">
+
 <img src="./img/mockups/desktop/one_building_small.png" width="500">
 <img src="./img/mockups/desktop/one_building_one_room.png" width="500">
+
+### Mobile Frontend
 
 <img src="./img/mockups/mobile/many_rooms.png">
 <img src="./img/mockups/mobile/one_room.png">
@@ -101,20 +108,22 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ## 2.5 Anforderungen im Detail
 
+### Userstories
 
-| **Als**  | **möchte ich**               | **so dass**                         | **Akzeptanz**                |
-| :------- | :--------------------------- | :---------------------------------- | :--------------------------- |
-| Benutzer | Messdaten angezeigt bekommen | ich die Informationen einsehen kann | Messdaten werden Dargestellt |
-|Benutzer|eine Ortsauswahl in beliebiger Genauigkeit treffen|ich die Messdaten für spezielle Orte einsehen kann|Gebäude, Stockwerk und Raumauswahl ist möglich|
-|Benutzer|Messdaten für spezielle Zeiten auwählen|ich Informationen über diese Zeiten erhalte| Zeitauswahl ist möglich                                      |
-|Administrator|Geräte den System hinzufügen|dieses Gerät auch Messungen durchführt|Hinzufügen von Geräten per Weboberfläche möglich|
-|Administrator|den Status der Geräte Einblicken können|ich defekte Geräte erkenne|Statusanzeige der Geräte auf der Weboberfläche implementiert|
-|||||
-|||||
-|||||
-|||||
-|||||
-|||||
+
+| **Als**  | **möchte ich**               | **so dass**                         | **Akzeptanz**                |                 |
+| :------- | :--------------------------- | :---------------------------------- | :--------------------------- | ---------------------------- |
+| Benutzer | Messdaten angezeigt bekommen | ich die Informationen einsehen kann | Messdaten werden Dargestellt | Muss |
+|Benutzer|eine Ortsauswahl in beliebiger Genauigkeit treffen|ich die Messdaten für spezielle Orte einsehen kann|Gebäude, Stockwerk und Raumauswahl ist möglich|Muss|
+|Benutzer|Messdaten für spezielle Zeiten auwählen|ich Informationen über diese Zeiten erhalte| Zeitauswahl ist möglich                                      | Soll                                  |
+|Administrator|Geräte den System hinzufügen|dieses Gerät auch Messungen durchführt|Hinzufügen von Geräten per Weboberfläche möglich|Muss|
+|Administrator|den Status der Geräte Einblicken können|ich defekte Geräte erkenne|Statusanzeige der Geräte auf der Weboberfläche implementiert|Kann|
+||||||
+||||||
+||||||
+||||||
+||||||
+||||||
 
 
 
