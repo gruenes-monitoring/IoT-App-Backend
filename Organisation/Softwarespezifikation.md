@@ -118,7 +118,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 |Benutzer|Messdaten für spezielle Zeiten auwählen|ich Informationen über diese Zeiten erhalte| Zeitauswahl ist möglich                                      | Soll                                  |
 |Administrator|Geräte den System hinzufügen|dieses Gerät auch Messungen durchführt|Hinzufügen von Geräten per Weboberfläche möglich|Muss|
 |Administrator|den Status der Geräte Einblicken können|ich defekte Geräte erkenne|Statusanzeige der Geräte auf der Weboberfläche implementiert|Kann|
-||||||
+|Benutzer |Grenzwerte festlegen|mich das System benachrichtigt wenn diese überschritten werden|Grenzwerte können festgelegt werden, System benachrichtig User per Push Nachricht|Muss|
 ||||||
 ||||||
 ||||||
