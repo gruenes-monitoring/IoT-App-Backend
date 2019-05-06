@@ -176,9 +176,31 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
     - Nicht durch den Kunden definierte spezifische Annahmen, Anforderungen und Abhдngigkeiten
     - Verwendete Technologien (Programmiersprache, Frameworks, etc.)
-    - Aufteilung in Git-Repositories gemдя Software- und Systemarchitektur und Softwarebbausteinen 
-    - Einschrдnkungen, Betriebsbedingungen und Faktoren, die die Entwicklung beeinflussen (Betriebssysteme, Entwicklungsumgebung)
-    - Interne Qualitдtsanforderungen (z.B. Softwarequalitдtsmerkmale wie z.B. Erweiterbarkeit)
+    - Aufteilung in Git-Repositories gemäß Software- und Systemarchitektur und Softwarebbausteinen 
+    - Einschränkungen, Betriebsbedingungen und Faktoren, die die Entwicklung beeinflussen (Betriebssysteme, Entwicklungsumgebung)
+    - Interne Qualitätsanforderungen (z.B. Softwarequalitätsmerkmale wie z.B. Erweiterbarkeit)
+
+Technologien:
+
+- Frontend:
+  - Rust, unter Verwendung des Yew Frameworks
+  - React Native für mobile Applikation
+  - WebGL 1.0 unter verwendung der Frameworks StardustJS und D3.js
+- Backend:
+  - Django Framework für Python
+  - Dynamische Datenbank (DBS?)
+- Kommunikation:
+  - MQTT Protokoll für Embedded Systeme
+  - GraphQL und Websockets für Frontend-Kommunikation
+- Hardware
+  - Raspberry Pi mit Temperatur-, Licht- und Luftfeuchtigkeits Sensoren
+  - Backend Server in der Cloud
+
+Git Repositories:
+
+- [Backend Repository & Dokumentation](https://github.com/jraddatz/IoT-App-Backend)
+
+
 
 ## 4.2 Verantwortlichkeiten
     - Zuordnung von Personen zu Softwarebausteinen aus Kapitel 3.1 und 3.2
