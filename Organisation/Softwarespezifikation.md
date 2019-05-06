@@ -185,7 +185,7 @@ Technologien:
 - Frontend:
   - Rust, unter Verwendung des Yew Frameworks
   - React Native für mobile Applikation
-  - WebGL 1.0 unter verwendung der Frameworks StardustJS und D3.js
+  - WebGL 1.0 unter (evtl.) Verwendung der Frameworks StardustJS und D3.js
 - Backend:
   - Django Framework für Python
   - Dynamische Datenbank (DBS?)
@@ -193,12 +193,14 @@ Technologien:
   - MQTT Protokoll für Embedded Systeme
   - GraphQL und Websockets für Frontend-Kommunikation
 - Hardware
-  - Raspberry Pi mit Temperatur-, Licht- und Luftfeuchtigkeits Sensoren
+  - Raspberry Pi mit Temperatur-, Licht- und Luftfeuchtigkeits-Sensoren
   - Backend Server in der Cloud
 
 Git Repositories:
 
 - [Backend Repository & Dokumentation](https://github.com/jraddatz/IoT-App-Backend)
+- [Mobile Frontend Repository](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
+- [Web Frontend Respository](https://github.com/FranNk3/IoT-App-WebFrontend)
 
 
 
