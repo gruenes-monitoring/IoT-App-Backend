@@ -1,8 +1,4 @@
-# Anforderungs- und Entwurfsspezifikation ("Pflichtenheft")
-
-* Wetterstation
-
-* !!Inhaltsverzeichnis!!
+# Anforderungs- und Entwurfsspezifikation: Wetterstation
 
 * Autoren
 
@@ -16,9 +12,30 @@
 
   * [Backend Repo](<https://github.com/jraddatz/IoT-App-Backend>)
   * [WebFrontend Repo](<https://github.com/FranNk3/IoT-App-WebFrontend>)
-  * [MobileFrontend Repo](<https://github.com/ChamounInfo/IoT-App-MobileFrontend>)
-  
+  * [MobileFrontend Repo](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
 
+
+**Inhaltsverzeichnis** 
+
+- [Einführung](#1 Einführung)
+  - [Beschreibung](#1.1 Beschreibung)
+  - [Ziele](#1.2 Ziele)
+- [Anforderungen](#2 Anforderungen)
+  - [Stakeholder](#2.1 Stakeholder)
+  - [Anforderungen](#2 Anforderungen)
+  - [Funktionale Anforderungen](#2.2 Funktionale Anforderungen)
+  - [Nicht-funktionale Anforderungen](#2.3 Nicht-funktionale Anforderungen)]
+  - [GUI](#2.4 Graphische Benutzerschnittstelle)
+- [Technische Beschreibung](#3 Technische Beschreibung)
+  - [Systemübersicht](#3.1 Systemübersicht)
+  - [Softwarearchitektur](#3.2 Softwarearchitektur)
+  - [Datenmodell](#3.3 Datenmodell)
+  - [Abläufe](#3.4 Abläufe)
+- [Projektorganisation](#4 Projektorganisation)
+  - [Annahmen](#4.1 Annahmen)
+  - [Verantwortlichkeiten](#4.2 Verantwortlichkeiten)
+  - [Grober Projektplan](#4.3 Grober Projektplan)
+- [Anhänge](#5 Anhänge)
 
 # 1 Einführung
 
@@ -26,7 +43,7 @@
 
 **Wetterstation**
 
-Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur, Luftfeuchtigkeit o.ä. gemessen werden. Die erfassten Daten werden daraufhin gespeichert, ausgewertet, plattformunabhängig visualisiert und online dargestellt. Die Standorte werden hierarchisch in Gebäude, Stockwerke und Räume unterteilt oder gruppiert. Es sollen des Weiteren Grenzwerte konfigurierbar sein und bei Überschreitung dieser der Benutzer benachrichtigt werden.
+Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur, Luftfeuchtigkeit o.ä. gemessen werden. Die erfassten Daten werden daraufhin gespeichert, ausgewertet, plattformunabhängig visualisiert und online dargestellt. Die Standorte werden hierarchisch in Gebäude, Stockwerke und Räume unterteilt oder gruppiert. Es sollen des weiteren Grenzwerte konfigurierbar sein und bei Überschreitung dieser der Benutzer benachrichtigt werden.
 
 ## 1.2 Ziele
 
@@ -38,11 +55,11 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ## 2.1 Stakeholder
 
-| Funktion | Name | Kontakt | Verfügbarkeit | Wissen | Interesse & Ziele | Relevanz |
-| -------- | ---- | ------- | ------------- | ------ | ----------------- | -------- |
-| Administrator | Herr Router | 127.0.0.1 | 60% | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System. | Hoch |
-| Benutzer | Frau Dr. Raum-Klima | 0800 Nase | 70% | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Intigrität | Sehr Hoch |
-| Benutzer | Thomas Müller | tmueller14@fh-bielefeld.cz | 20% | Wenig. | Daten sollen auch für ihn als Laien übersichtlich dargestellt werden. | Mittel |
+| Funktion      | Name                | Kontakt                    | Verfügbarkeit | Wissen                                   | Interesse & Ziele                        | Relevanz  |
+| ------------- | ------------------- | -------------------------- | ------------- | ---------------------------------------- | ---------------------------------------- | --------- |
+| Administrator | Herr Router         | 127.0.0.1                  | 60%           | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System.      | Hoch      |
+| Benutzer      | Frau Dr. Raum-Klima | 0800 Nase                  | 70%           | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Integrität | Sehr Hoch |
+| Benutzer      | Thomas Müller       | tmueller14@fh-bielefeld.cz | 20%           | Wenig.                                   | Daten sollen auch für ihn als Laien übersichtlich dargestellt werden. | Mittel    |
 
 ## 2.2 Funktionale Anforderungen
 
@@ -88,10 +105,6 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 | Prüfbarkeit                | -        | -    | X      | -              |
 
 ## 2.4 Graphische Benutzerschnittstelle
-    - GUI-Mockups passend zu User Stories
-    - Screens mit №berschrift kennzeichnen, die im Inhaltsverzeichnis zu sehen ist
-    - Unter den Screens darstellen (bzw. verlinken), welche User Stories mit dem Screen abgehandelt werden
-    - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
 
 ### Web Frontend
 
@@ -111,29 +124,19 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 ### Userstories
 
 
-| **Als**  | **möchte ich**               | **so dass**                         | **Akzeptanz**                |                 |
-| :------- | :--------------------------- | :---------------------------------- | :--------------------------- | ---------------------------- |
-| Benutzer | Messdaten angezeigt bekommen | ich die Informationen einsehen kann | Messdaten werden Dargestellt | Muss |
-|Benutzer|eine Ortsauswahl in beliebiger Genauigkeit treffen|ich die Messdaten für spezielle Orte einsehen kann|Gebäude, Stockwerk und Raumauswahl ist möglich|Muss|
-|Benutzer|Messdaten für spezielle Zeiten auwählen|ich Informationen über diese Zeiten erhalte| Zeitauswahl ist möglich                                      | Soll                                  |
-|Administrator|Geräte den System hinzufügen|dieses Gerät auch Messungen durchführt|Hinzufügen von Geräten per Weboberfläche möglich|Muss|
-|Administrator|den Status der Geräte Einblicken können|ich defekte Geräte erkenne|Statusanzeige der Geräte auf der Weboberfläche implementiert|Kann|
-|Benutzer |Grenzwerte festlegen|mich das System benachrichtigt wenn diese überschritten werden|Grenzwerte können festgelegt werden, System benachrichtig User per Push Nachricht|Muss|
-||||||
-||||||
-||||||
-||||||
-||||||
-
+| **Als**       | **möchte ich**                           | **so dass**                              | **Akzeptanz**                            |      |
+| :------------ | :--------------------------------------- | :--------------------------------------- | :--------------------------------------- | ---- |
+| Benutzer      | Messdaten angezeigt bekommen             | ich die Informationen einsehen kann      | Messdaten werden Dargestellt             | Muss |
+| Benutzer      | eine Ortsauswahl in beliebiger Genauigkeit treffen | ich die Messdaten für spezielle Orte einsehen kann | Gebäude, Stockwerk und Raumauswahl sind möglich | Muss |
+| Benutzer      | Messdaten für spezielle Zeiten auswählen | ich Informationen über diese Zeiten erhalte | Zeitauswahl ist möglich                  | Soll |
+| Administrator | Geräte dem System hinzufügen             | dieses Gerät auch Messungen durchführt   | Hinzufügen von Geräten per Weboberfläche möglich | Muss |
+| Administrator | den Status der Geräte Einblicken können  | ich defekte Geräte erkenne               | Statusanzeige der Geräte auf der Weboberfläche implementiert | Kann |
+| Benutzer      | Grenzwerte festlegen                     | mich das System benachrichtigt, wenn diese überschritten werden | Grenzwerte können festgelegt werden, System  benachrichtigt User per Push Nachricht | Muss |
 
 
 # 3 Technische Beschreibung
 
 ## 3.1 Systemübersicht
-
-
-    - Systemarchitekturdiagramm ("Box-And-Arrow" Diagramm)
-    - Kommunikationsprotokolle, Datenformate
 
 ### Systemarchitektur
 
@@ -141,44 +144,27 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ## 3.2 Softwarearchitektur
 
-    - Darstellung von Softwarebausteinen (Module, Schichten, Komponenten)
 
 ![](./img/Softwarearchitektur.png)
 
-## 3.3 Schnittstellen
 
-    - Schnittstellenbeschreibung
-    - Auflistung der nach auяen sichtbaren Schnittstelle der Softwarebausteine
 
-## 3.4 Datenmodell 
+## 3.3 Datenmodell 
 
 ### ERD
 
 ![](./img/Datenbank.png)
 
-    - Konzeptionelles Analyseklassendiagramm (logische Darstellung der Konzepte der Anwendungsdomдne)
-    - Modellierung des physikalischen Datenmodells 
-      - RDBMS: ER-Diagramm bzw. Dokumentenorientiert: JSON-Schema
 
-## 3.5 Abläufe
+
+## 3.4 Abläufe
 
 ![](./img/mdead.png)
 
-    - Aktivitätsdiagramme fьr relevante Use Cases
-    - Aktivitдtsdiagramm fьr den Ablauf sдmtlicher Use Cases
-
-## 3.6 Entwurf
-    - Detaillierte UML-Diagramme fьr relevante Softwarebausteine
 
 # 4 Projektorganisation
 
 ## 4.1 Annahmen
-
-    - Nicht durch den Kunden definierte spezifische Annahmen, Anforderungen und Abhдngigkeiten
-    - Verwendete Technologien (Programmiersprache, Frameworks, etc.)
-    - Aufteilung in Git-Repositories gemäß Software- und Systemarchitektur und Softwarebbausteinen 
-    - Einschränkungen, Betriebsbedingungen und Faktoren, die die Entwicklung beeinflussen (Betriebssysteme, Entwicklungsumgebung)
-    - Interne Qualitätsanforderungen (z.B. Softwarequalitätsmerkmale wie z.B. Erweiterbarkeit)
 
 Technologien:
 
@@ -205,22 +191,27 @@ Git Repositories:
 
 
 ## 4.2 Verantwortlichkeiten
-    - Zuordnung von Personen zu Softwarebausteinen aus Kapitel 3.1 und 3.2
-    - Rollendefinition und Zuordnung
+| Softwarebaustein      | Person(en)      |
+| --------------------- | --------------- |
+| Datenbank             | André Matutat   |
+| GraphQL Schnittstelle | André Matutat   |
+| MQTT                  | Jonas Raddatz   |
+| Raspberry Pie         | Jonas Raddatz   |
+| Backend               | Jonas Raddatz   |
+| Browser Frontend      | Dejan Novakovic |
+| WebGL                 | Daniel Räder    |
+| Mobile Frontend       | Simon Safar     |
 
-| Softwarebaustein | Person(en)        |
-| ---------------- | ----------------- |
-| Komponente A     | Thomas Mustermann |
 
 ### Rollenzuordnung
 
-| Name          | Rolle              |
-| ------------- | ------------------ |
-| André Matutat | Backend-Entwickler, Softwarearchitekt |
+| Name            | Rolle                                 |
+| --------------- | ------------------------------------- |
+| André Matutat   | Backend-Entwickler, Softwarearchitekt |
 | Jonas Raddatz   | Backend-Entwickler, Softwarearchitekt |
-|Dejan Novakovic|Frontend-Entwickler|
-|Daniel Räder|Frontend-Entwickler|
-|Simon Safar|Frontend-Entwickler|
+| Dejan Novakovic | Frontend-Entwickler                   |
+| Daniel Räder    | Frontend-Entwickler                   |
+| Simon Safar     | Frontend-Entwickler                   |
 
 
 
@@ -256,9 +247,6 @@ Git Repositories:
 # 5 Anhänge
 
 ## 5.1 Glossar 
-    - Definitionen, Abkьrzungen, Begriffe
-
 ## 5.2 Referenzen
-    - Handbьcher, Gesetze
 
 ## 5.3 Index
