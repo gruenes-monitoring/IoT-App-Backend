@@ -151,8 +151,6 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ## 3.3 Datenmodell 
 
-### ERD
-
 ![](./img/Datenbank.png)
 
 
@@ -173,14 +171,14 @@ Technologien:
   - React Native für mobile Applikation
   - WebGL 1.0 unter (evtl.) Verwendung der Frameworks StardustJS und D3.js
 - Backend:
-  - Django Framework für Python
-  - Dynamische Datenbank (DBS?)
+  - Node.js, Express
+  - MongoDB + Compass
 - Kommunikation:
   - MQTT Protokoll für Embedded Systeme
   - GraphQL und Websockets für Frontend-Kommunikation
 - Hardware
   - Raspberry Pi mit Temperatur-, Licht- und Luftfeuchtigkeits-Sensoren
-  - Backend Server in der Cloud
+  - Backend Server in der Azure-Cloud von Microsoft
 
 Git Repositories:
 
@@ -196,7 +194,7 @@ Git Repositories:
 | Datenbank             | André Matutat   |
 | GraphQL Schnittstelle | André Matutat   |
 | MQTT                  | Jonas Raddatz   |
-| Raspberry Pie         | Jonas Raddatz   |
+| Raspberry Pi          | Jonas Raddatz   |
 | Backend               | Jonas Raddatz   |
 | Browser Frontend      | Dejan Novakovic |
 | WebGL                 | Daniel Räder    |
