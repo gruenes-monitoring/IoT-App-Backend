@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>20</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>420</w>
+      <h>420</h>
+    </coordinates>
+    <panel_attributes>Device
+--
+DeviceID
+Description
+Country
+City
+Address
+Building
+Floor
+Room
+Latitude
+Longitude
+Active
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>0</y>
+      <w>420</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>Measurement
+--
+MeasurementID
+Timestamp
+Temperature
+Humidity
+Brightness</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>160</y>
+      <w>260</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+1         n</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+</diagram>
