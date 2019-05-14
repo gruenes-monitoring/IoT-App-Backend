@@ -50,7 +50,7 @@ Brightness</panel_attributes>
       <w>260</w>
       <h>80</h>
     </coordinates>
-    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 1         n</panel_attributes>
     <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
