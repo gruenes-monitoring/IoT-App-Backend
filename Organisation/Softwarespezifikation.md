@@ -1,16 +1,49 @@
-# Anforderungs- und Entwurfsspezifikation ("Pflichtenheft")
+# Anforderungs- und Entwurfsspezifikation: Wetterstation
 
-* Titel, Autoren, Inhaltsverzeichnis
-* Link zum Source Code Repository
+* Autoren
+
+  * Jonas Raddatz
+  * André Matutat
+  * Daniel Räder
+  * Dejan Novakovic
+  * Simon Safar
+
+* Software Repo
+
+  * [Backend Repo](<https://github.com/jraddatz/IoT-App-Backend>)
+  * [WebFrontend Repo](<https://github.com/FranNk3/IoT-App-WebFrontend>)
+  * [MobileFrontend Repo](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
 
 
-# 1 Einfьhrung
+**Inhaltsverzeichnis** 
+
+- [Einführung](#1 Einführung)
+  - [Beschreibung](#1.1 Beschreibung)
+  - [Ziele](#1.2 Ziele)
+- [Anforderungen](#2 Anforderungen)
+  - [Stakeholder](#2.1 Stakeholder)
+  - [Anforderungen](#2 Anforderungen)
+  - [Funktionale Anforderungen](#2.2 Funktionale Anforderungen)
+  - [Nicht-funktionale Anforderungen](#2.3 Nicht-funktionale Anforderungen)]
+  - [GUI](#2.4 Graphische Benutzerschnittstelle)
+- [Technische Beschreibung](#3 Technische Beschreibung)
+  - [Systemübersicht](#3.1 Systemübersicht)
+  - [Softwarearchitektur](#3.2 Softwarearchitektur)
+  - [Datenmodell](#3.3 Datenmodell)
+  - [Abläufe](#3.4 Abläufe)
+- [Projektorganisation](#4 Projektorganisation)
+  - [Annahmen](#4.1 Annahmen)
+  - [Verantwortlichkeiten](#4.2 Verantwortlichkeiten)
+  - [Grober Projektplan](#4.3 Grober Projektplan)
+- [Anhänge](#5 Anhänge)
+
+# 1 Einführung
 
 ## 1.1 Beschreibung
 
 **Wetterstation**
 
-Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur, Luftfeuchtigkeit o.ä. gemessen werden. Die erfassten Daten werden daraufhin gespeichert, ausgewertet, plattformunabhängig visualisiert und online dargestellt. Die Standorte werden hierarchisch in Gebäude, Stockwerke und Räume unterteilt oder gruppiert. Es sollen des Weiteren Grenzwerte konfigurierbar sein und bei Überschreitung dieser der Benutzer benachrichtigt werden.
+Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur, Luftfeuchtigkeit o.ä. gemessen werden. Die erfassten Daten werden daraufhin gespeichert, ausgewertet, plattformunabhängig visualisiert und online dargestellt. Die Standorte werden hierarchisch in Gebäude, Stockwerke und Räume unterteilt oder gruppiert. Es sollen des weiteren Grenzwerte konfigurierbar sein und bei Überschreitung dieser der Benutzer benachrichtigt werden.
 
 ## 1.2 Ziele
 
@@ -22,169 +55,215 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ## 2.1 Stakeholder
 
-| Funktion | Name | Kontakt | Verfьgbarkeit | Wissen  | Interesse & Ziele  | Relevanz  |
-|---|---|---|---|---|---|---|
-|  |   |   |   |   |   |   |
-
-
-### Beispiel
-
-| Funktion | Name | Kontakt | Verfьgbarkeit | Wissen  | Interesse & Ziele  | Relevanz  |
-|---|---|---|---|---|---|---|
-| Leiter der Bibliothek  |  Herr Bauer | Tel. 409000  | Von 9-19 Uhr telefonisch erreichbar, Mitarbeit zu 30% mцglich, Nьrnberg  | Kennt das Altsystem aus der Anwendersicht, soll mit dem System arbeiten  | Vereinfachung der Ausleihprozesse  | Fachlicher Entscheider  |
-| Administrator  | Herr Heiner  | Heiner@gmx.net  | Per E-Mail, immer erreichbar, Verfьgbarkeit 50%, Nьrnberg  | Vertraut mit vergleichbarer Verwaltungssoftware   |  Stabiles System, geringer Wartungsaufwand | Informationslieferant bzgl. Wartungsanforderungen  |
-| Product-Owner  | Paul Ottmer  |  po@ottmer.de | Per E-Mail und tel. tagsьber, Verfьgbarkeit 100%, Nьrnberg  | Koordinator fьr die Inputs der Stakeholder  | ROI des Systems sicherstellen  | Entscheider - als Koordinator der Stakeholderanforderungen  |
+| Funktion      | Name                | Kontakt                    | Verfügbarkeit | Wissen                                   | Interesse & Ziele                        | Relevanz  |
+| ------------- | ------------------- | -------------------------- | ------------- | ---------------------------------------- | ---------------------------------------- | --------- |
+| Administrator | Herr Router         | 127.0.0.1                  | 60%           | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System.      | Hoch      |
+| Benutzer      | Frau Dr. Raum-Klima | 0800 Nase                  | 70%           | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Integrität | Sehr Hoch |
+| Benutzer      | Thomas Müller       | tmueller14@fh-bielefeld.cz | 20%           | Wenig.                                   | Daten sollen auch für ihn als Laien übersichtlich dargestellt werden. | Mittel    |
 
 ## 2.2 Funktionale Anforderungen
-    - Use-Case Diagramme
-    - Strukturierung der Diagramme in funktionale Gruppen
+
+### Use-Case Diagramm
+
+![](./img/ucd.png)
 
 ## 2.3 Nicht-funktionale Anforderungen 
 
 ### 2.3.1 Rahmenbedingungen
-    - Normen, Standards, Protokolle, Hardware, externe Vorgaben
+
+- Die Messungen sollen mithilfe eines Raspberry Pi getätigt werden.
+- Die Daten sollen in einer Datenbank gespeichert werden
 
 ### 2.3.2 Betriebsbedingungen
-    - Vorgaben des Kunden (z.B. Web Browser / Betriebssystem Versionen, Programmiersprache)
 
-### 2.3.3 Qualitдtsmerkmale
-    - Externe Qualitдtsanforderungen (z.B. Performance, Sicherheit, Zuverlдssigkeit, Benutzerfreundlichkeit)
+- Webclient:
+  - Mozilla Firefox mind. 66.0.0
+- Mobile:
+  - Android mind. 6.0 oder iOS mind. 9
 
-Qualitдtsmerkmal | sehr gut | gut | normal | nicht relevant
----|---|---|---|---
-**Zuverlдssigkeit** | | | | |
-Fehlertoleranz |X|-|-|-|
-Wiederherstellbarkeit |X|-|-|-|
-Ordnungsmдяigkeit |X|-|-|-|
-Richtigkeit |X|-|-|-|
-Konformitдt |-|X|-|-|
-**Benutzerfreundlichkeit** | | | | |
-Installierbarkeit |-|-|X|-|
-Verstдndlichkeit |X|-|-|-|
-Erlernbarkeit |-|X|-|-|
-Bedienbarkeit |-|X|-|-|
-**Performance** | | | | |
-Zeitverhalten |-|-|X|-|
-Effizienz|-|-|-|X|
-**Sicherheit** | | | | |
-Analysierbarkeit |X|-|-|-|
-Modifizierbarkeit |-|-|-|X|
-Stabilitдt |X|-|-|-|
-Prьfbarkeit |X|-|-|-|
+### 2.3.3 Qualitätsmerkmale
+| Qualitätsmerkmal           | sehr gut | gut  | normal | nicht relevant |
+| -------------------------- | -------- | ---- | ------ | -------------- |
+| **Zuverlässigkeit**        |          |      |        |                |
+| Fehlertoleranz             | -        | X    | -      | -              |
+| Wiederherstellbarkeit      | -        | X    | -      | -              |
+| Ordnungsmäßigkeit          | X        | -    | -      | -              |
+| Richtigkeit                | X        | -    | -      | -              |
+| Konformität                | X        | -    | -      | -              |
+| **Benutzerfreundlichkeit** |          |      |        |                |
+| Installierbarkeit          | -        | -    | x      | -              |
+| Verständlichkeit           | X        | -    | -      | -              |
+| Erlernbarkeit              | X        | -    | -      | -              |
+| Bedienbarkeit              | X        | -    | -      | -              |
+| **Performance**            |          |      |        |                |
+| Zeitverhalten              | -        | -    | X      | -              |
+| Effizienz                  | -        | -    | X      | -              |
+| **Sicherheit**             |          |      |        |                |
+| Analysierbarkeit           | X        | -    | -      | -              |
+| Modifizierbarkeit          | -        | X    | -      | -              |
+| Stabilität                 | -        | -    | X      | -              |
+| Prüfbarkeit                | -        | -    | X      | -              |
 
 ## 2.4 Graphische Benutzerschnittstelle
-    - GUI-Mockups passend zu User Stories
-    - Screens mit №berschrift kennzeichnen, die im Inhaltsverzeichnis zu sehen ist
-    - Unter den Screens darstellen (bzw. verlinken), welche User Stories mit dem Screen abgehandelt werden
-    - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
+
+### Web Frontend
+
+<img src="./img/mockups/desktop/all_buildings.png" width="500">
+
+<img src="./img/mockups/desktop/one_building_small.png" width="500">
+<img src="./img/mockups/desktop/one_building_one_room.png" width="500">
+
+### Mobile Frontend
+
+<img src="./img/mockups/mobile/many_rooms.png">
+<img src="./img/mockups/mobile/one_room.png">
+<img src="./img/mockups/mobile/table.png">
 
 ## 2.5 Anforderungen im Detail
-    - User Stories mit Akzeptanzkritierien 
-    - Optional: Name (oder ID) und Prioritдt ("Must", "Should", "Could", "Won't")
-    - Strukturierung der User Stories in funktionale Gruppen
 
-### Schablone fьr User Stories
+### Userstories
 
-| **Als** | **mцchte ich** | **so dass** | **Akzeptanz** |
-| :------ | :----- | :------ | :-------- |
-| Wer | Was | Warum | Wann akzeptiert |
 
-### Beispiel 1
-
-| **Als** | **mцchte ich** | **so dass** | **Akzeptanz** |
-| :------ | :----- | :------ | :-------- |
-| Benutzer | bei Fehleingabe die Lцsung angezeigt bekommen | ich lernen kann | Lцsung wird angezeigt |
-
-### Beispiel 2
-
-| **Name**| **In meiner Rolle als**...|   ...**mцchte ich**...   | ..., **so dass**... | **Erfьllt, wenn**... | **Prioritдt**   |
-|:-----|:----------:|:-------------------|:-------------|:---------|:----------------|
-| Lernen  |Benutzer| bei Fehleingabe die Lцsung angezeigt bekommen|ich lernen kann| Lцsung wird angezeigt | Muss |
+| **Als**       | **möchte ich**                           | **so dass**                              | **Akzeptanz**                            |      |
+| :------------ | :--------------------------------------- | :--------------------------------------- | :--------------------------------------- | ---- |
+| Benutzer      | Messdaten angezeigt bekommen             | ich die Informationen einsehen kann      | Messdaten werden Dargestellt             | Muss |
+| Benutzer      | eine Ortsauswahl in beliebiger Genauigkeit treffen | ich die Messdaten für spezielle Orte einsehen kann | Gebäude, Stockwerk und Raumauswahl sind möglich | Muss |
+| Benutzer      | Messdaten für spezielle Zeiten auswählen | ich Informationen über diese Zeiten erhalte | Zeitauswahl ist möglich                  | Soll |
+| Administrator | Geräte dem System hinzufügen             | dieses Gerät auch Messungen durchführt   | Hinzufügen von Geräten per Weboberfläche möglich | Muss |
+| Administrator | den Status der Geräte Einblicken können  | ich defekte Geräte erkenne               | Statusanzeige der Geräte auf der Weboberfläche implementiert | Kann |
+| Benutzer      | Grenzwerte festlegen                     | mich das System benachrichtigt, wenn diese überschritten werden | Grenzwerte können festgelegt werden, System  benachrichtigt User per Push Nachricht | Muss |
 
 
 # 3 Technische Beschreibung
 
-## 3.1 Systemьbersicht
-    - Systemarchitekturdiagramm ("Box-And-Arrow" Diagramm)
-    - Kommunikationsprotokolle, Datenformate
+## 3.1 Systemübersicht
+
+### Systemarchitektur
+
+![](./img/Systemarchitektur.png)
 
 ## 3.2 Softwarearchitektur
-    - Darstellung von Softwarebausteinen (Module, Schichten, Komponenten)
 
-## 3.3 Schnittstellen
-    - Schnittstellenbeschreibung
-    - Auflistung der nach auяen sichtbaren Schnittstelle der Softwarebausteine
 
-## 3.4 Datenmodell 
-    - Konzeptionelles Analyseklassendiagramm (logische Darstellung der Konzepte der Anwendungsdomдne)
-    - Modellierung des physikalischen Datenmodells 
-      - RDBMS: ER-Diagramm bzw. Dokumentenorientiert: JSON-Schema
+![](./img/Softwarearchitektur.png)
 
-## 3.5 Ablдufe
-    - Aktivitдtsdiagramme fьr relevante Use Cases
-    - Aktivitдtsdiagramm fьr den Ablauf sдmtlicher Use Cases
 
-## 3.6 Entwurf
-    - Detaillierte UML-Diagramme fьr relevante Softwarebausteine
+
+## 3.3 Datenmodell 
+
+![](./img/Datenbank.png)
+
+
+
+## 3.4 Abläufe
+
+![](./img/mdead.png)
+
 
 # 4 Projektorganisation
 
 ## 4.1 Annahmen
-    - Nicht durch den Kunden definierte spezifische Annahmen, Anforderungen und Abhдngigkeiten
-    - Verwendete Technologien (Programmiersprache, Frameworks, etc.)
-    - Aufteilung in Git-Repositories gemдя Software- und Systemarchitektur und Softwarebbausteinen 
-    - Einschrдnkungen, Betriebsbedingungen und Faktoren, die die Entwicklung beeinflussen (Betriebssysteme, Entwicklungsumgebung)
-    - Interne Qualitдtsanforderungen (z.B. Softwarequalitдtsmerkmale wie z.B. Erweiterbarkeit)
+
+Technologien:
+
+- Frontend:
+  - Rust, unter Verwendung des Yew Frameworks
+  - React Native für mobile Applikation
+  - WebGL 1.0 unter (evtl.) Verwendung der Frameworks StardustJS und D3.js
+- Backend:
+  - Node.js, Express
+  - MongoDB + Compass
+- Kommunikation:
+  - MQTT Protokoll für Embedded Systeme
+  - GraphQL und Websockets für Frontend-Kommunikation
+- Hardware
+  - Raspberry Pi mit Temperatur-, Licht- und Luftfeuchtigkeits-Sensoren
+  - Backend Server in der Azure-Cloud von Microsoft
+
+Git Repositories:
+
+- [Backend Repository & Dokumentation](https://github.com/jraddatz/IoT-App-Backend)
+- [Mobile Frontend Repository](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
+- [Web Frontend Respository](https://github.com/FranNk3/IoT-App-WebFrontend)
+
+
 
 ## 4.2 Verantwortlichkeiten
-    - Zuordnung von Personen zu Softwarebausteinen aus Kapitel 3.1 und 3.2
-    - Rollendefinition und Zuordnung
+| Softwarebaustein      | Person(en)      |
+| --------------------- | --------------- |
+| Datenbank             | André Matutat   |
+| GraphQL Schnittstelle | André Matutat   |
+| MQTT                  | Jonas Raddatz   |
+| Raspberry Pi          | Jonas Raddatz   |
+| Backend               | Jonas Raddatz   |
+| Browser Frontend      | Dejan Novakovic |
+| WebGL                 | Daniel Räder    |
+| Mobile Frontend       | Simon Safar     |
 
-| Softwarebaustein | Person(en) |
-|----------|-----------|
-| Komponente A | Thomas Mustermann |
-
-### Rollen
-
-#### Softwarearchitekt
-Entwirft den Aufbau von Softwaresystemen und trifft Entscheidungen ьber das Zusammenspiel der Softwarebausteine.
-
-#### Frontend-Entwickler
-Entwickelt graphische oder andere Benutzerschnittstellen, insbesondere das Layout einer Anwendung.
-
-#### Backend-Entwickler
-Implementiert die funktionale Logik der Anwendung. Hierbei werden zudem diverse Datenquellen und externe Dienste integriert und fьr die Anwendung bereitgestellt.
 
 ### Rollenzuordnung
 
-| Name     | Rolle     |
-|----------|-----------|
-| Thomas Mustermann | Softwarearchitekt |
+| Name            | Rolle                                 |
+| --------------- | ------------------------------------- |
+| André Matutat   | Backend-Entwickler, Softwarearchitekt |
+| Jonas Raddatz   | Backend-Entwickler, Softwarearchitekt |
+| Dejan Novakovic | Frontend-Entwickler                   |
+| Daniel Räder    | Frontend-Entwickler                   |
+| Simon Safar     | Frontend-Entwickler                   |
+
 
 
 ## 4.3 Grober Projektplan
-    - Meilensteine
 
 ### Meilensteine
-* KW 43 (21.10)
-  * Abgabe Pflichtenheft
-* KW 44 (28.10) / Projekt aufsetzen
-  * Repository Struktur
-* KW 45 (4.11) / Implementierung
-  * Implementierung #3 (Final)
-* KW 48 (18.12) / Abnahmetests
-  * manuelle Abnahmetestss
-  * Prдsentation / Software-Demo
 
-# 5 Anhдnge
+- 30.04
+  - Mockups
+  - User Stories
+  - Use-Cases
+  - Architektur Diagramme
+  - Grobe Projektplanung
+- 14.05 
+  - Datenbank aufgesetzt
+  - Backend implementiert
+  - Frontend implementiert
+- 21.05 
+  - Prototyp getestet und verbessert
+
+* 28.05
+  * Prototyp Präsentieren
+* 18.06
+  * CD eingerichtet
+  * Hardware eingerichtet
+  * Backend fertiggestellt
+  * Frontend fertiggestellt
+* 25.06
+  * Akzeptanztests bestanden
+* 02.07
+  * Projektpräsentation
+
+# 5 Anhänge
 
 ## 5.1 Glossar 
-    - Definitionen, Abkьrzungen, Begriffe
+
+### MQQT
+Message Queuing Telemetry Transport (kurz MQTT) ist ein einfach aufgebautes Publish-Subscribe-Protokoll zum Nachrichtenaustausch im Netzwerk. Es benötigt sehr wenig Bandbreite und Funktion auf den Clients, bietet aber trotzdem eine hohe Zuverlässigkeit bei der Nachrichtenübermittlung. Nachrichten werden in sog. Topics, die man sich wie eine Ordnerstruktur vorstellen kann, einsortiert.
+
+### I2C
+I²C, für englisch Inter-Integrated Circuit, im Deutschen gesprochen als I-Quadrat-C oder englisch I-Squared-C , ist ein 1982 von Philips Semiconductors (heute NXP Semiconductors) entwickelter serieller Datenbus.Er wird hauptsächlich geräteintern für die Kommunikation zwischen verschiedenen Schaltungsteilen benutzt, z. B. zwischen einem Controller und Peripherie-ICs.
+
+### RS-485
+EIA-485, auch als RS-485 bezeichnet, ist ein Industriestandard für eine physische Schnittstelle für die asynchrone serielle Datenübertragung.
+
+### SPI
+Das Serial Peripheral Interface (kurz SPI) ist ein im Jahr 1987 von Susan C. Hill Et al., damals bei dem Halbleiterhersteller Motorola (heute NXP Semiconductors), entwickeltes Bus-System und stellt einen „lockeren“ Standard für einen synchronen seriellen Datenbus (Synchronous Serial Port) dar, mit dem digitale Schaltungen nach dem Master-Slave-Prinzip miteinander verbunden werden können.
+
+### GraphQL
+GraphQL ist eine, von Facebook entwickelte, opensource Abfragesprache, dessen Fokus auf einfache und flexible Benutzung liegt.
+
+### WebGL
+WebGL ist eine 3D Grafik API basierend auf OpenGL (genauer, OpenGL ES, für Embedded Systems). Die API ist für Verwendung in Javascript/ECMAScript in HTML5 gedacht und somit für alle Platformen die HTML5 unterstützen verfügbar.Mit WebGL gerenderte Elemente werden im HTML Canvas Element dargestellt, mit Hilfe eines eigens definierten RenderingContext, WebGLRenderingContext, welcher den standardmäßigen CanvasRenderingContext2D ersetzt.
 
 ## 5.2 Referenzen
-    - Handbьcher, Gesetze
 
 ## 5.3 Index
-
-
-
