@@ -1,4 +1,4 @@
-const Measurement = require('./measurement.js');
+//const Measurement = require('./measurement.js');
 const Device = require('./device.js');
 
 var mqtt = require('mqtt');
@@ -9,8 +9,12 @@ client.on('connect', function () {
   client.subscribe('#') 
 })
  
-client.on('message', function (topic, message) {
+client.on('message', function (topic, payload) {
   // message is Buffer
-  console.log(topic.toString() + ':   ' + message.toString());
+  console.log(topic.toString() + ':   ' + payload.toString());
   var device = new Device(topic);
+  if(device.id) {
+	var message = JSON.parse(payload);
+	console.log(message.measurement.timestamp.toString());
+  }
 })

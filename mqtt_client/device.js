@@ -18,7 +18,7 @@ class Device {
 			this.country = topicArr[0];
 			this.city = topicArr[1];
 			this.address = topicArr[2];
-			if(isInt(topicArr[3]) {
+			if(isInt(topicArr[3])) {
 				this.floor = topicArr[3];
 			}				
 			else
