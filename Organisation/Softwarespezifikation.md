@@ -149,13 +149,43 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 
 
-## 3.3 Datenmodell 
+## 3.3 Schnittstellen
+
+### MQTT
+
+#### MQTT-Topic
+
+```
+country/city/address/building/floor/room/id
+```
+
+
+
+#### MQTT-Payload
+
+```json
+{  
+    "measurement" : {
+        "timestamp":"2019-05-20T15:05:53+00:00",
+        "temperature":"21.7",
+        "humidity":"53.1",
+        "brightness":"500.0"
+  	}
+}
+```
+
+- timestamp: Datum und Uhrzeit (ISO 8601-konform)
+- temperature: Gleitkommazahl, in °C
+- humidity: Gleitkommazahl, in %
+- brightness: Gleitkommazahl, in Lux
+
+## 3.4 Datenmodell 
 
 ![](./img/Datenbank.png)
 
 
 
-## 3.4 Abläufe
+## 3.5 Abläufe
 
 ![](./img/mdead.png)
 
