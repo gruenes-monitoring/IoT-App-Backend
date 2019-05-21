@@ -21,13 +21,19 @@ client.on('message', function (topic, payload) {
   var device = new Device(topic);
   if(device.id) {
 	var message = JSON.parse(payload);
-	console.log(message.measurement.timestamp.toString());
+	//console.log(message.measurement.timestamp.toString());
+	var mutation = "mutation {addMeasurement(Timestamp: \"" + message.measurement.timestamp + "\", DeviceID: " 
+		+ device.id + ", MeasurementID: 15, Temperature: " + message.measurement.temperature + ", Humidity: " + message.measurement.humidity
+		+ ", Brightness: " + message.measurement.brightness + ") { MeasurementID } }";
+	console.log(mutation);
+
 	fetch({
-		query: 'query { measurementQuery(DeviceID: 1) { Timestamp } }',
+		query:mutation,
+		//query: 'query { deviceQuery(DeviceID: ' + device.id + ') { DeviceID } }',
+		//query: 'query { measurementQuery(DeviceID: ' + device.id + ') { DeviceID } }',
 	}).then(res => {
 		console.log(res.data);
 	});
   }
 })
 
-//query:'mutation {addMeasurement(Timestamp: "test", DeviceID: 1, MeasurementID: 15) { MeasurementID } }',
