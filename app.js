@@ -23,7 +23,7 @@ client.on('message', function (topic, payload) {
 	var message = JSON.parse(payload);
 	//console.log(message.measurement.timestamp.toString());
 	var mutation = "mutation {addMeasurement(Timestamp: \"" + message.measurement.timestamp + "\", DeviceID: " 
-		+ device.id + ", MeasurementID: 15, Temperature: " + message.measurement.temperature + ", Humidity: " + message.measurement.humidity
+		+ device.id + ", MeasurementID: 16, Temperature: " + message.measurement.temperature + ", Humidity: " + message.measurement.humidity
 		+ ", Brightness: " + message.measurement.brightness + ") { MeasurementID } }";
 	console.log(mutation);
 
