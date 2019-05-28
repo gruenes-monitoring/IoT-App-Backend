@@ -14,6 +14,17 @@ const PORT = process.env.PORT || "4000";
 const db = "mongodb://127.0.0.1:27017/test";
 
 
+export function getNextSequenceValue(sequenceName){
+
+   var sequenceDocument = db.counters.findAndModify({
+      query:{_id: sequenceName },
+      update: {$inc:{sequence_value:1}},
+      new:true
+   });
+	
+   return sequenceDocument.sequence_value;
+}
+
 
 // Connect to MongoDB with Mongoose.
 mongoose

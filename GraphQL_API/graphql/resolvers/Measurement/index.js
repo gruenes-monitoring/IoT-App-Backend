@@ -1,6 +1,6 @@
 // The User schema.
 import Measurement from "../../../models/Measurement";
-
+import getNextSequenceValue from "../../../index"
 export default {
   Query: {
     measurementQuery: (root, args) => {
@@ -14,7 +14,7 @@ export default {
   Mutation: {
     addMeasurement: (root, { MeasurementID,DeviceID, Timestamp, Temperature, Humidity, Brightness	}) => {
       const newMeasurement= new Measurement({ MeasurementID,DeviceID, Timestamp, Temperature, Humidity, Brightness});
-
+		console.log(getNextSequenceValue("mID");
       return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
           err ? reject(err) : resolve(res);
