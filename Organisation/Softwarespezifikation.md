@@ -13,6 +13,7 @@
   * [Backend Repo](<https://github.com/jraddatz/IoT-App-Backend>)
   * [WebFrontend Repo](<https://github.com/FranNk3/IoT-App-WebFrontend>)
   * [MobileFrontend Repo](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
+  * [WebGL Modul Repo](https://github.com/draeder94/IoT-Wetterstation-WebGL-Module)
 
 
 **Inhaltsverzeichnis** 
@@ -185,6 +186,7 @@ Git Repositories:
 - [Backend Repository & Dokumentation](https://github.com/jraddatz/IoT-App-Backend)
 - [Mobile Frontend Repository](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
 - [Web Frontend Respository](https://github.com/FranNk3/IoT-App-WebFrontend)
+- [WebGL Modul Repo](https://github.com/draeder94/IoT-Wetterstation-WebGL-Module)
 
 
 
