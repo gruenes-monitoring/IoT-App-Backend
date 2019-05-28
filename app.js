@@ -12,8 +12,8 @@ const fetch = createApolloFetch({
 var client  = mqtt.connect('mqtt://40.89.163.191:1883');
  
 client.on('connect', function () {
-  client.subscribe('#') 
-})
+  client.subscribe('#'); 
+});
  
 client.on('message', function (topic, payload) {
   // message is Buffer
@@ -35,5 +35,5 @@ client.on('message', function (topic, payload) {
 		console.log(res.data);
 	});
   }
-})
+});
 
