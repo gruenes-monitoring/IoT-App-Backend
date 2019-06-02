@@ -11,7 +11,8 @@ const CountersSchema = new Schema({
   },
  sequence_value:{
 	 type: Number,
-	 required: true 
+	 required: true
+ }
 });
 
 const Counters = mongoose.model("Counters", CountersSchema);
