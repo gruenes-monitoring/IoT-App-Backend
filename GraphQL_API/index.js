@@ -9,22 +9,7 @@ import schema from "./graphql/";
 import Measurement from "./models/Measurement";
 const app = express();
 const PORT = process.env.PORT || "4000";
-//const db = "mongodb://sa:adminKennwort1@40.89.134.226:27017";
-//const db = "mongodb://40.89.134.226:27017";
 const db = "mongodb://127.0.0.1:27017/test";
-
-
-export function getNextSequenceValue(sequenceName){
-
-   var sequenceDocument = db.counters.findAndModify({
-      query:{_id: sequenceName },
-      update: {$inc:{sequence_value:1}},
-      new:true
-   });
-	
-   return sequenceDocument.sequence_value;
-}
-
 
 // Connect to MongoDB with Mongoose.
 mongoose
