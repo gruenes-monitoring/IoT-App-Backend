@@ -1,17 +1,6 @@
 // The User schema.
 import Measurement from "../../../models/Measurement";
-import Counters from "../../../models/Counters";
 
-
-
-function getNextSequenceValue(){
-   var sequenceDocument = Counters.findAndModify({
-      query:{_id: "mid" },
-      update: {$inc:{sequence_value:1}},
-      new:true
-   });
-   return sequenceDocument.sequence_value;
-}
 
 export default {
   Query: {
@@ -25,8 +14,12 @@ export default {
   },
   Mutation: {
     addMeasurement: (root, { MeasurementID,DeviceID, Timestamp, Temperature, Humidity, Brightness	}) => {
+		
+	 var tmp= require("../../../index");
+	 var getID=tmp.getSequenceNumber;
+	 console.log(getID("mid"));
+		
       const newMeasurement= new Measurement({ MeasurementID,DeviceID, Timestamp, Temperature, Humidity, Brightness});
-		//console.log(getNextSequenceValue());
       return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
           err ? reject(err) : resolve(res);
