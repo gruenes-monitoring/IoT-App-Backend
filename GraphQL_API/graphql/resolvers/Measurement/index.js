@@ -13,19 +13,23 @@ export default {
     }
   },
   Mutation: {
-    addMeasurement: (root, { MeasurementID,DeviceID, Timestamp, Temperature, Humidity, Brightness	}) => {
-		
+    addMeasurement: (root, {DeviceID, Timestamp, Temperature, Humidity, Brightness	}) => {
+
 	 var tmp= require("../../../index");
-	 var getID=tmp.getSequenceNumber;
-	 console.log(getID("mid"));
-		
-      const newMeasurement= new Measurement({ MeasurementID,DeviceID, Timestamp, Temperature, Humidity, Brightness});
-      return new Promise((resolve, reject) => {
+         var getID=tmp.getSequenceNumber;
+         getID("mid",function(id){
+         var MeasurementID=id;
+
+        const newMeasurement= new Measurement({MeasurementID,DeviceID, Timestamp, Temperature, Humidity, Brightness});
+        return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
           err ? reject(err) : resolve(res);
         });
       });
+	 });
+	
     }
+
   }
 };
 
