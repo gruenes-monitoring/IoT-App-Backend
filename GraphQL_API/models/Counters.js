@@ -10,10 +10,11 @@ const CountersSchema = new Schema({
   },
  sequence_value:{
 	 type: Number,
-	 required: true 
+	 required: true
+ }
 });
 
-Counters.statics.findAndModify = function (query, sort, doc, options, callback) {
+CountersSchema.statics.findAndModify = function (query, sort, doc, options, callback) {
   return this.collection.findAndModify(query, sort, doc, options, callback);
 };
 

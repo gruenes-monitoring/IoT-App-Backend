@@ -13,10 +13,10 @@ const db = "mongodb://127.0.0.1:27017/test";
 
 
 // Holt naechste Freie ID aus der Datenbank
-exports.getSequenceNumber= function (sequenceType){
-	Counter.findAndModify({ _id: sequenceType }, [], { $inc: { next: 1 } }, {}, function (err, counter) {
+exports.getSequenceNumber= function (sequenceType,cb){
+	Counters.findAndModify({ pid: sequenceType }, [], { $inc: { sequence_value: 1 } }, {}, function (err, counter) {
 		if (err) throw err;
-		console.log('updated, counter is ' + counter.next);
+		cb(counter.value.sequence_value);
 	});
 }
 
