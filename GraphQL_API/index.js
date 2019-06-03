@@ -12,12 +12,12 @@ const PORT = process.env.PORT || "4000";
 const db = "mongodb://127.0.0.1:27017/test";
 
 
-
+// Holt naechste Freie ID aus der Datenbank
 exports.getSequenceNumber= function (sequenceType){
-Counter.findAndModify({ _id: sequenceType }, [], { $inc: { next: 1 } }, {}, function (err, counter) {
-  if (err) throw err;
-  console.log('updated, counter is ' + counter.next);
-});
+	Counter.findAndModify({ _id: sequenceType }, [], { $inc: { next: 1 } }, {}, function (err, counter) {
+		if (err) throw err;
+		console.log('updated, counter is ' + counter.next);
+	});
 }
 
 
