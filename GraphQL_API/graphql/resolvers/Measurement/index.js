@@ -26,6 +26,17 @@ export default {
 			});
 		});
     }
+  },
+  Subscription: {
+	   measurementQuery: (root, args) => {
+	return new Promise((resolve, reject) => {
+        Measurement.find(args).exec((err, res) => {	
+         err ? reject(err) : resolve(res);
+        });
+      });
+    }
+	  
   }
+  
 };
 
