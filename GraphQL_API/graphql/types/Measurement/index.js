@@ -13,6 +13,6 @@ export default `
     
   }
   type Mutation {
-  addMeasurement(MeasurementID: Int!,DeviceID: Int!, Timestamp: String!, Temperature: Float, Humidity: Float, Brightness: Float): Measurement
+  addMeasurement(DeviceID: Int!, Timestamp: String!, Temperature: Float, Humidity: Float, Brightness: Float): Measurement
   }
 `;

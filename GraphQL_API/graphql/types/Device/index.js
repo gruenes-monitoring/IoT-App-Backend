@@ -18,7 +18,7 @@ export default `
     
   }
   type Mutation {
-  addDevice(DeviceID: Int!, Country: String!, City: String!, Address: String!, Description: String,
+  addDevice(Country: String!, City: String!, Address: String!, Description: String,
 	Buliding: String, Floor: Int, Room: String!, Latitude: String, longitude: String, Active: Boolean!): Device
   }
 `;
