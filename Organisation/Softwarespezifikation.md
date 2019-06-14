@@ -187,8 +187,13 @@ Mit * gekennzeichnete Werte sind nicht verpflichtend.
 
 ## 3.5 Abläufe
 
+### Messdaten einsehen
+
 ![](./img/mdead.png)
 
+### Neue Messung
+
+![](./img/Sequenzdiagramm_Messung.png)
 
 # 4 Projektorganisation
 
