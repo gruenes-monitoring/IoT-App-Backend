@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 const MeasurementSchema = new Schema({
   DeviceID: {
-    type: Number,
+    type: String,
     required: true,
     unique: false
   },
