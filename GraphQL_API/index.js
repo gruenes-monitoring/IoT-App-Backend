@@ -4,8 +4,11 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
 import schema from "./graphql/schema";
+import { execute, subscribe } from 'graphql';
+import { createServer } from 'http';
+import { SubscriptionServer } from 'subscriptions-transport-ws';
 
-const app = express();
+const server = express();
 const PORT = process.env.PORT || "4000";
 const db = "mongodb://127.0.0.1:27017/test";
 
@@ -21,19 +24,25 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
-app.use(
-  "/graphql",
-  cors(),
-  bodyParser.json(),
-  expressGraphQL({
-    schema,
-    graphiql: true
-  })
-);
+const ws = createServer(server);
+ws.listen(PORT, () => {
+  console.log(`GraphQL Server is now running on http://localhost:${PORT}`);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+  // Set up the WebSocket for handling GraphQL subscriptions.
+  new SubscriptionServer({
+    execute,
+    subscribe,
+    schema
+  }, {
+    server: ws,
+    path: '/subscriptions',
+  });
+});
 
 
-
+server.use('/graphiql', graphiqlExpress({
+  endpointURL: '/graphql',
+  subscriptionsEndpoint: `ws://localhost:${PORT}/subscriptions` // subscriptions endpoint.
+}));
 
 

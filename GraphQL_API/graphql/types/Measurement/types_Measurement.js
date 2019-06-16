@@ -15,4 +15,7 @@ export default `
   type Mutation {
   addMeasurement(DeviceID: ID!, Timestamp: String!, Temperature: Float, Humidity: Float, Brightness: Float): Measurement
   }
+  type Subscription {
+    measurementAdded: Measurement
+  }
 `;

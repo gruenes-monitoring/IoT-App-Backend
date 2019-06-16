@@ -1,11 +1,13 @@
 // import Measurement Schema 
 import Measurement from "../../../models/Measurement";
-
+import { PubSub } from 'graphql-subscriptions';
+const pubsub = new PubSub(); //create a PubSub instance
+const MAESURMENT_ADDED_TOPIC = 'newMeasurement';
 
 export default {
   Query: {
     measurementQuery: (root, args) => {
-      
+
       // Variablen fuer Querys die das Datum benutzen
       let after = false;
       let before = false;
@@ -29,7 +31,7 @@ export default {
 
       return new Promise((resolve, reject) => {
         Measurement.find(args).exec((err, res) => {
-          
+
           // Loesch alle Ergebnisse raus, die das Startdatum unterschreiten bzw. das Enddatum ueberschreite
           if (after) {
             for (let i = 0; i < res.length; i++) {
@@ -43,7 +45,7 @@ export default {
               if (res[i] != undefined && res[i].Timestamp > endDate) delete res[i];
             }
           }
-          
+
           err ? reject(err) : resolve(res);
         });
       });
@@ -59,7 +61,11 @@ export default {
         });
       });
     }
+  },
+  Subscription: {
+    measurementAdded: {  // create a channelAdded subscription resolver function.
+      subscribe: () => pubsub.asyncIterator(MAESURMENT_ADDED_TOPIC)
+    }
   }
-
 };
 
