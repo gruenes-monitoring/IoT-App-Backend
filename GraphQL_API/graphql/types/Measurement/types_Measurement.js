@@ -9,7 +9,7 @@ export default `
     Brightness: Float
   }
   type Query {
-    measurementQuery(DeviceID: ID!): [Measurement]
+    measurementQuery(DeviceID: ID!, startDate: String, endDate: String): [Measurement]
     
   }
   type Mutation {
