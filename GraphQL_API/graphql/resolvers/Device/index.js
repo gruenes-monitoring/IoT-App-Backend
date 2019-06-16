@@ -4,6 +4,8 @@ import Device from "../../../models/Device";
 export default {
   Query: {
     deviceQuery: (root, args) => {
+	//args._id="ObjectId(\""+args._id+"\")"    
+	console.log(args._id);    
       return new Promise((resolve, reject) => {
         Device.find(args).exec((err, res) => {
           err ? reject(err) : resolve(res);
