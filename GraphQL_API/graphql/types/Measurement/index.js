@@ -1,18 +1,18 @@
 export default `
 
   type Measurement {
-    MeasurementID: Int!  
-    DeviceID: Int!
+    _id: ID!  
+    DeviceID: ID!
     Timestamp: String!
     Temperature: Float
     Humidity: Float
     Brightness: Float
   }
   type Query {
-    measurementQuery(DeviceID: Int!): [Measurement]
+    measurementQuery(DeviceID: ID!): [Measurement]
     
   }
   type Mutation {
-  addMeasurement(DeviceID: Int!, Timestamp: String!, Temperature: Float, Humidity: Float, Brightness: Float): Measurement
+  addMeasurement(DeviceID: ID!, Timestamp: String!, Temperature: Float, Humidity: Float, Brightness: Float): Measurement
   }
 `;

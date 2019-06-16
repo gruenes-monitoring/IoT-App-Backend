@@ -1,14 +1,7 @@
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
-
-// Create the User Schema.
 const DeviceSchema = new Schema({
-  DeviceID: {
-    type: Number,
-    required: true,
-    unique: true
-  },
   Description: {
     type: String,
     required: false
@@ -17,35 +10,35 @@ const DeviceSchema = new Schema({
     type: String,
     required: true
   },
-    City: {
+  City: {
     type: String,
     required: true
   },
-    Address: {
+  Address: {
     type: String,
     required: true
   },
-    Building: {
+  Building: {
     type: String,
     required: false
   },
-    Floor: {
+  Floor: {
     type: Number,
     required: false
   },
-    Room: {
+  Room: {
     type: String,
     required: true
   },
-    Latitude: {
+  Latitude: {
     type: String,
     required: false
   },
-    Longitude: {
+  Longitude: {
     type: String,
     required: false
   },
-    Active: {
+  Active: {
     type: Boolean,
     required: true
   }

@@ -3,31 +3,18 @@ import expressGraphQL from "express-graphql";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
-
 import schema from "./graphql/";
 
-import Counters from "./models/Counters";
 const app = express();
 const PORT = process.env.PORT || "4000";
 const db = "mongodb://127.0.0.1:27017/test";
-
-
-// Holt naechste Freie ID aus der Datenbank
-exports.getSequenceNumber= function (sequenceType,cb){
-	Counters.findAndModify({ pid: sequenceType }, [], { $inc: { sequence_value: 1 } }, {}, function (err, counter) {
-		if (err) throw err;
-		cb(counter.value.sequence_value);
-	});
-}
-
-
 
 // Connect to MongoDB with Mongoose.
 mongoose
   .connect(
     db,
     {
-	  useCreateIndex: true,
+      useCreateIndex: true,
       useNewUrlParser: true
     }
   )

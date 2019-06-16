@@ -1,37 +1,30 @@
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
-
-// Create the User Schema.
 const MeasurementSchema = new Schema({
-   MeasurementID: {
-    type: Number,
+  DeviceID: {
+    type: String,
     required: true,
-    unique: true
-  },
-    DeviceID: {
-    type: Number,
-    required: true,
-unique:false
+    unique: false
   },
   Timestamp: {
-	  type: Date,
+    type: Date,
     required: true
   },
   Temperature: {
     type: Number,
     required: false
   },
-    Humidity: {
+  Humidity: {
     type: Number,
     required: false
   },
-    Brightness: {
-	    type: Number,
+  Brightness: {
+    type: Number,
     required: false
   }
-    
+
 });
 
-const  Measurement= mongoose.model("Measurement", MeasurementSchema);
+const Measurement = mongoose.model("Measurement", MeasurementSchema);
 export default Measurement;
