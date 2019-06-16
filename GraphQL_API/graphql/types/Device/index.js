@@ -1,6 +1,6 @@
 export default `
   type Device {
-    DeviceID: ID!
+    _id: ID!
     Description: String
     Country: String!
 	City: String!
@@ -13,7 +13,7 @@ export default `
 	Active: Boolean!
   }
   type Query {
-    deviceQuery(DeviceID: ID, Country: String, City: String, Address: String, 
+    deviceQuery( _id: ID, Country: String, City: String, Address: String, 
 	Buliding: String, Floor: Int, Room: String, Latitude: String, Longitude: String, Active: Boolean): [Device]
     
   }

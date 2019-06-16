@@ -1,7 +1,7 @@
 export default `
 
   type Measurement {
-    MeasurementID: ID!  
+    _id: ID!  
     DeviceID: Int!
     Timestamp: String!
     Temperature: Float
