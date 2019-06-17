@@ -156,7 +156,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 #### MQTT-Topic
 
 ```
-country/city/address/building*/floor*/room/id
+country/city/address/building*/floor*/room
 ```
 
 Mit * gekennzeichnete Werte sind nicht verpflichtend.
@@ -187,8 +187,13 @@ Mit * gekennzeichnete Werte sind nicht verpflichtend.
 
 ## 3.5 Abläufe
 
+### Messdaten einsehen
+
 ![](./img/mdead.png)
 
+### Neue Messung
+
+![](./img/Sequenzdiagramm_Messung.png)
 
 # 4 Projektorganisation
 
