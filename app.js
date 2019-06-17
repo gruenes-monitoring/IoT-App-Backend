@@ -11,10 +11,10 @@ client.on('connect', function () {
 });
  
 client.on('message', function (topic, payload) {
-  // message is Buffer
+  var device;
   console.log(topic.toString() + ':   ' + payload.toString());
   try {
-	var device = new Device(topic);
+	device = new Device(topic);
   } catch(Ex) {
     console.log(Ex);
   }

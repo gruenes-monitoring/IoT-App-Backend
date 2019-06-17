@@ -39,7 +39,7 @@ class GraphQL_Interface {
 		}
 	}
 	
-	static async insertDevice(device, message) {
+	static insertDevice(device, message) {
 		var mutation = "mutation { addDevice ( Active: true, Country: \"" + device.country + "\", City: \"" + device.city + "\", Address: \"" + device.address + "\", Room:\"" + device. room + "\"";
 		if(device.building) mutation += ", Building: \"" + device.building + "\"";
 		if(device.floor) mutation += ", Floor: \"" + device.floor + "\"";

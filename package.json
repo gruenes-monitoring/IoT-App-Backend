@@ -9,7 +9,7 @@
     "mocha": "^5.2.0"
   },
   "scripts": {
-    "test": "jshint app.js && jshint addTwoNumbers.js && mocha",
+    "test": "jshint app.js && jshint addTwoNumbers.js && jshint mqtt_client/graphql_interface.js && jshint mqtt_client/device.js && mocha",
     "start": "node app.js"
   },
   "dependencies": {
