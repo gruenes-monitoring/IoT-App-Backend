@@ -17,7 +17,7 @@ class GraphQL_Interface {
 	static doInsert(device, message) {
 		var query = "query { deviceQuery (Active: true, Country: \"" + device.country + "\", City: \"" + device.city + "\", Address: \"" + device.address + "\", Room:\"" + device. room + "\"";
 		if(device.building) query += ", Building: \"" + device.building + "\"";
-		if(device.floor) query += ", Floor: \"" + device.floor + "\"";
+		if(device.floor) query += ", Floor: " + device.floor;
 		query += ") { _id } }";
 		console.log(query);
 		this.fetch({
@@ -42,7 +42,7 @@ class GraphQL_Interface {
 	static insertDevice(device, message) {
 		var mutation = "mutation { addDevice ( Active: true, Country: \"" + device.country + "\", City: \"" + device.city + "\", Address: \"" + device.address + "\", Room:\"" + device. room + "\"";
 		if(device.building) mutation += ", Building: \"" + device.building + "\"";
-		if(device.floor) mutation += ", Floor: \"" + device.floor + "\"";
+		if(device.floor) mutation += ", Floor: " + device.floor;
 		mutation += ") { _id } }";
 		
 		console.log(mutation);
