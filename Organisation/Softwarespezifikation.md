@@ -156,7 +156,7 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 #### MQTT-Topic
 
 ```
-country/city/address/building*/floor*/room/id
+country/city/address/building*/floor*/room
 ```
 
 Mit * gekennzeichnete Werte sind nicht verpflichtend.
