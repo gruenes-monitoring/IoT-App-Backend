@@ -13,13 +13,14 @@ client.on('connect', function () {
 client.on('message', function (topic, payload) {
   // message is Buffer
   console.log(topic.toString() + ':   ' + payload.toString());
-  var device = new Device(topic);
+  try {
+	var device = new Device(topic);
+  } catch(Ex) {
+    console.log(Ex);
+  }
   if(device) {
 	var message = JSON.parse(payload);
 	GraphQL_Interface.doInsert(device, message);
   }
-
-	//console.log(message.measurement.timestamp.toString());
-
 });
 

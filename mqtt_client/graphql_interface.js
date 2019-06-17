@@ -63,7 +63,7 @@ class GraphQL_Interface {
 		this.fetch({
 			query:mutation,
 		}).then(res => {
-			console.log("Measurement mit ID " + res.data.addMeasurement._id + "eingefügt.");
+			console.log("Measurement mit ID " + res.data.addMeasurement._id + " eingefügt.");
 		});
 	}
 }

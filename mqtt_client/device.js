@@ -41,14 +41,14 @@ class Device {
 			}
 			else 
 			{
-				console.log('Ungültiges Topic (Floor kein Zahlenwert)');
+				throw new Error('Ungültiges Topic!');
 			}
 		  }
 		  this.id = "";
 	  }
 	  else 
 	  {
-		  console.log('Ungültiges Topic (Länge von ' + topicArr.length.toString() + ')');
+		  throw new Error('Ungültiges Topic!');
 	  }
 	}
 }
