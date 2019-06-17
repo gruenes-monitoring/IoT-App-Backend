@@ -44,6 +44,7 @@ class Device {
 				console.log('Ungültiges Topic (Floor kein Zahlenwert)');
 			}
 		  }
+		  this.id = "";
 	  }
 	  else 
 	  {
