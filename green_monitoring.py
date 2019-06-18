@@ -163,10 +163,12 @@ def mainLoop():
         temperature, humidity = getTempAndHumid()
         light = getLight()
         message = {
-            "timestamp": str(time.time()),
-            "temperature": str(temperature),
-            "humidity": str(humidity),
-            "brightness": light
+            "measurement": {
+                "timestamp": time.time(),
+                "temperature": temperature,
+                "humidity": humidity,
+                "brightness": light
+            }
         }
         client.publish(config.topic, json.dumps(message))
         time.sleep(config.interval)
