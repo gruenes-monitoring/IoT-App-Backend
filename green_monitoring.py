@@ -141,7 +141,7 @@ def stopMQTT():
 def getTempAndHumid():
     humidity, temperature = Adafruit_DHT.read_retry(Adafruit_DHT.DHT22, 4)
     if humidity is not None and temperature is not None:
-        log("Temperature: {0:0.1f}°C  Humidity: {1:0.1f}%".format(temperature, humidity))
+        log("Temperature: {0:0.2f}°C  Humidity: {1:0.2f}%".format(temperature, humidity))
     else:
         log("Failed to get reading for Temperature or Humidity.")
         temperature = -273.0
@@ -154,6 +154,9 @@ def getLight():
     log("Light Level: {0:0.2f} lx".format(light))
     return light
 
+def limitFloatDecimals(f):
+    return int((f * 100) + 0.5) / 100.0
+
 def mainLoop():
     while True:
         if config.checkUpdate():
@@ -165,9 +168,9 @@ def mainLoop():
         message = {
             "measurement": {
                 "timestamp": time.time(),
-                "temperature": temperature,
-                "humidity": humidity,
-                "brightness": light
+                "temperature": limitFloatDecimals(temperature),
+                "humidity": limitFloatDecimals(humidity),
+                "brightness": limitFloatDecimals(light)
             }
         }
         client.publish(config.topic, json.dumps(message))

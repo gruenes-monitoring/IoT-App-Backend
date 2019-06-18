@@ -36,3 +36,5 @@ def test_config_update():
     assert config_pass.checkUpdate() == True
     config_change_ip("1")
 
+def test_limitFloatDecimals():
+	assert green_monitoring.limitFloatDecimals(42.12345) == 42.12
