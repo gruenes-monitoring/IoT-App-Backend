@@ -2,15 +2,9 @@ const Device = require('./device.js');
 const { createApolloFetch } = require('apollo-fetch');
 
 class GraphQL_Interface {
-	/**constructor(connString) {
-		this.fetch = createApolloFetch({
-		  uri: 'http://40.89.134.226:4000/graphql',
-		});
-	}**/
-	
 	static init(connString) {
 		this.fetch = createApolloFetch({
-		  uri: 'http://40.89.134.226:4000/graphql',
+		  uri: connString,
 		});
 	}
 	
@@ -24,6 +18,9 @@ class GraphQL_Interface {
 			query:query,
 		}).then(res => {
 			this.checkDeviceID(device, message, res.data);
+		})
+		.catch(error => {
+			this.printError(error);
 		});
 	}
 	
@@ -53,18 +50,30 @@ class GraphQL_Interface {
 				device.id = res.data.addDevice._id;
 				this.insertMeasurement(device, message);
 			}
+		})
+		.catch(error => {
+			this.printError(error);
 		});
 	}
 	
 	static insertMeasurement(device, message) {
-		var mutation = "mutation {addMeasurement(Timestamp: \"" + new Date(message.measurement.timestamp) + "\", DeviceID: \"" + device.id + "\", Temperature: " + message.measurement.temperature + ", Humidity: " + message.measurement.humidity + ", Brightness: " + message.measurement.brightness + ") { _id } }";
-		console.log(mutation);
+		if(message.measurement) {
+			var mutation = "mutation {addMeasurement(Timestamp: \"" + new Date(message.measurement.timestamp) + "\", DeviceID: \"" + device.id + "\", Temperature: " + message.measurement.temperature + ", Humidity: " + message.measurement.humidity + ", Brightness: " + message.measurement.brightness + ") { _id } }";
+			console.log(mutation);
 
-		this.fetch({
-			query:mutation,
-		}).then(res => {
-			console.log("Measurement mit ID " + res.data.addMeasurement._id + " eingefügt.");
-		});
+			this.fetch({
+				query:mutation,
+			}).then(res => {
+				console.log("Measurement mit ID " + res.data.addMeasurement._id + " eingefügt.");
+			})
+				.catch(error => {
+				this.printError(error);
+			});
+		}
+	}
+	
+	static printError(error) {
+		console.log("Fehler mit GraphQL-API! Fehlermeldung: " + error);
 	}
 }
 
