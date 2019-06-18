@@ -55,7 +55,7 @@ export default {
   Mutation: {
     addMeasurement: (root, { DeviceID, Timestamp, Temperature, Humidity, Brightness }) => {
       const newMeasurement = new Measurement({ DeviceID, Timestamp, Temperature, Humidity, Brightness });
-      pubsub.publish(TOPIC, { measurementAdded: newMeasurement, DeviceID: DeviceID, Temperature: Temperature });
+      pubsub.publish(TOPIC, { measurementAdded: newMeasurement, DeviceID: DeviceID, Temperature: Temperature, Humidity: Humidity, Brightness: Brightness });
       return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
           err ? reject(err) : resolve(res);
@@ -68,7 +68,10 @@ export default {
 	subscribe: withFilter(
        () => pubsub.asyncIterator(TOPIC),
 	(payload, variables) => {
-		return payload.DeviceID === variables.DeviceID && payload.Temperature>variables.Temperature;
+    return payload.DeviceID === variables.DeviceID && 
+    payload.Temperature>variables.MaxTemperature && payload.Temperature<variables.MinTemperature &&
+    payload.Humidity>variables.MaxHumidity && payload.Humidity<variables.MinHumidity &&
+    payload.Brightness>variables.MaxBrightness && payload.Brightness<variables.MinBrightness;
     }
 	)
   }
