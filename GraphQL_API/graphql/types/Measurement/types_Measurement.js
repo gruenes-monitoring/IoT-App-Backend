@@ -16,6 +16,6 @@ export default `
   addMeasurement(DeviceID: ID!, Timestamp: String!, Temperature: Float, Humidity: Float, Brightness: Float): Measurement
   }
   type Subscription {
-    measurementAdded(DeviceID: ID!): Measurement
+    measurementAdded(DeviceID: ID!, Temperature: Float!): Measurement
   }
 `;
