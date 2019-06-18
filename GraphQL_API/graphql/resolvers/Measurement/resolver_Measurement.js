@@ -2,13 +2,13 @@
 import Measurement from "../../../models/Measurement";
 import { PubSub, withFilter } from 'graphql-subscriptions';
 const pubsub = new PubSub(); //create a PubSub instance
-const TOPIC ='newMeasurement';
+const TOPIC = 'newMeasurement';
 
 export default {
   Query: {
-	  
+
     measurementQuery: (root, args) => {
-	    // Variablen fuer Querys die das Datum benutzen
+      // Variablen fuer Querys die das Datum benutzen
       let after = false;
       let before = false;
       let endDate;
@@ -64,17 +64,20 @@ export default {
     }
   },
   Subscription: {
-	  measurementAdded: {  // create a channelAdded subscription resolver function.
-	subscribe: withFilter(
-       () => pubsub.asyncIterator(TOPIC),
-	(payload, variables) => {
-    return payload.DeviceID === variables.DeviceID && 
-    payload.Temperature>variables.MaxTemperature && payload.Temperature<variables.MinTemperature &&
-    payload.Humidity>variables.MaxHumidity && payload.Humidity<variables.MinHumidity &&
-    payload.Brightness>variables.MaxBrightness && payload.Brightness<variables.MinBrightness;
+    measurementAdded: {  // create a channelAdded subscription resolver function.
+      subscribe: withFilter(
+        () => pubsub.asyncIterator(TOPIC),
+        (payload, variables) => {
+          return payload.DeviceID === variables.DeviceID
+            && (payload.Temperature == undefined || variables.MaxTemperature == undefined || payload.Temperature > variables.MaxTemperature)
+            && (payload.Temperature == undefined || variables.MinTemperature == undefined || payload.Temperature < variables.MinTemperature)
+            && (payload.Humidity == undefined || variables.MaxHumidity == undefined || payload.Humidity > variables.MaxHumidity)
+            && (payload.Humidity == undefined || variables.MinHumidity == undefined || payload.Humidity < variables.MinHumidity)
+            && (payload.Brightness == undefined || variables.MaxBrightness == undefined || payload.Brightness > variables.MaxBrightness)
+            && (payload.Brightness == undefined || variables.MinBrightness == undefined || payload.Brightness < variables.MinBrightness)
+        }
+      )
     }
-	)
   }
-	 }
 };
 
