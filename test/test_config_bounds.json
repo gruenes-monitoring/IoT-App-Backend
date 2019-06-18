@@ -1,0 +1,20 @@
+{
+    "_keys": [
+        "mqtt-ip",
+        "interval",
+        "topic",
+        "logger"
+    ],
+    "mqtt-ip": "127.0.0.1",
+    "mqtt-ip_type": "text",
+    "mqtt-ip_desc": "IP-Adresse des MQTT Brokers",
+    "interval": "0",
+    "interval_type": "number",
+    "interval_desc": "Message Interval in Sekunden (minimum 2)",
+    "topic": "this/is/a/test",
+    "topic_type": "text",
+    "topic_desc": "MQTT Topic, gültige Formate:<i><br>land/stadt/adresse/raum<br>land/stadt/adresse/gebäude/raum<br>land/stadt/adresse/etage/raum<br>land/stadt/adresse/gebäude/etage/raum</i>",
+    "logger": "true",
+    "logger_type": "boolean",
+    "logger_desc": "Scheiben von Logdateien"
+}
