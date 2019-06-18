@@ -55,6 +55,7 @@ export default {
   Mutation: {
     addMeasurement: (root, { DeviceID, Timestamp, Temperature, Humidity, Brightness }) => {
       const newMeasurement = new Measurement({ DeviceID, Timestamp, Temperature, Humidity, Brightness });
+      pubsub.publish(MAESURMENT_ADDED_TOPIC, { measurementAdded: newMeasurement });
       return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
           err ? reject(err) : resolve(res);
