@@ -1,14 +1,14 @@
 // import Measurement Schema 
 import Measurement from "../../../models/Measurement";
-import { PubSub } from 'graphql-subscriptions';
+import { PubSub, withFilter } from 'graphql-subscriptions';
 const pubsub = new PubSub(); //create a PubSub instance
-const MAESURMENT_ADDED_TOPIC = 'newMeasurement';
+const TOPIC ='newMeasurement';
 
 export default {
   Query: {
+	  
     measurementQuery: (root, args) => {
-
-      // Variablen fuer Querys die das Datum benutzen
+	    // Variablen fuer Querys die das Datum benutzen
       let after = false;
       let before = false;
       let endDate;
@@ -55,7 +55,7 @@ export default {
   Mutation: {
     addMeasurement: (root, { DeviceID, Timestamp, Temperature, Humidity, Brightness }) => {
       const newMeasurement = new Measurement({ DeviceID, Timestamp, Temperature, Humidity, Brightness });
-      pubsub.publish(MAESURMENT_ADDED_TOPIC, { measurementAdded: newMeasurement });
+      pubsub.publish(TOPIC, { measurementAdded: newMeasurement, DeviceID: DeviceID });
       return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
           err ? reject(err) : resolve(res);
@@ -64,9 +64,14 @@ export default {
     }
   },
   Subscription: {
-    measurementAdded: {  // create a channelAdded subscription resolver function.
-      subscribe: () => pubsub.asyncIterator(MAESURMENT_ADDED_TOPIC)
+	  measurementAdded: {  // create a channelAdded subscription resolver function.
+	subscribe: withFilter(
+       () => pubsub.asyncIterator(TOPIC),
+	(payload, variables) => {
+		return payload.DeviceID === variables.DeviceID;
     }
+	)
   }
+	 }
 };
 
