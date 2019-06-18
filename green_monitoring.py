@@ -3,20 +3,21 @@
 from __future__ import print_function
 import os, sys, getopt
 import json, time, keyboard
-import smbus
 import logging
 from logging.handlers import RotatingFileHandler
 
-import Adafruit_DHT
-import paho.mqtt.client as mqtt
+if __name__ == "__main__":
+    import smbus
+    import Adafruit_DHT
+    import paho.mqtt.client as mqtt
 
 FILE_CONFIG = "./gm_config.json"
 FILE_LOGGING = "./gm_log.log"
 I2C_ADDRESS_LIGHT = 0x23
 
 class Config:
-    def __init__(self):
-        self.filename = FILE_CONFIG
+    def __init__(self, filename):
+        self.filename = filename
         self._cached_stamp = os.stat(self.filename).st_mtime
         self.verbose = False
         self.loadConfig()
@@ -44,7 +45,7 @@ class Config:
             return old_ip != self.ip
         return False
 
-config = Config()
+config = Config(FILE_CONFIG)
 client = None
 
 log_formatter = logging.Formatter("%(asctime)s %(levelname)s %(funcName)s(%(lineno)d) %(message)s")
@@ -170,29 +171,30 @@ def mainLoop():
         client.publish(config.topic, json.dumps(message))
         time.sleep(config.interval)
 
-launchArgs(sys.argv)
-log("")
-log("===============================================")
-log("Grünes Monitoring")
-log("===============================================")
-log("")
-try:
-    config.printConfig()
+if __name__ == "__main__":
+    launchArgs(sys.argv)
+    log("")
+    log("===============================================")
+    log("Grünes Monitoring")
+    log("===============================================")
+    log("")
+    try:
+        config.printConfig()
     
-    log("Connecting I2C Bus")
-    bus = smbus.SMBus(1)
+        log("Connecting I2C Bus")
+        bus = smbus.SMBus(1)
     
-    log("Testing & Calibrating Sensors - This will take 10 seconds")
-    log("The data gathered will not be sent to the broker")
-    initSensors()
+        log("Testing & Calibrating Sensors - This will take 10 seconds")
+        log("The data gathered will not be sent to the broker")
+        initSensors()
     
-    log("Establishing MQTT Connection")
-    initMQTT()
+        log("Establishing MQTT Connection")
+        initMQTT()
     
-    log("Beginning Main Loop")
-    mainLoop()
-except KeyboardInterrupt:
-    stopMQTT()
-    log("\nProgram terminated. Good bye!")
-    logging.shutdown()
-    pass
+        log("Beginning Main Loop")
+        mainLoop()
+    except KeyboardInterrupt:
+        stopMQTT()
+        log("\nProgram terminated. Good bye!")
+        logging.shutdown()
+        pass
