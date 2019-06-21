@@ -3,7 +3,7 @@ import Measurement from "../../../models/Measurement";
 import { PubSub, withFilter } from 'graphql-subscriptions';
 const pubsub = new PubSub(); //create a PubSub instance
 const TOPIC = 'newMeasurement';
-var myLogger =require('../../../index');
+import  myLogger from "../../../index";
 export default {
   Query: {
 

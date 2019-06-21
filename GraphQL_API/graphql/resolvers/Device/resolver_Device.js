@@ -1,7 +1,6 @@
 // import the Device Schema 
 import Device from "../../../models/Device";
-var myLogger =require('../../../index');
-
+import myLogger from "../../../index";
 export default {
   Query: {
     deviceQuery: (root, args) => { 

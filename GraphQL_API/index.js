@@ -18,7 +18,7 @@ const ip= "40.89.134.226";
 var fs= require('fs');
 var access = fs.createWriteStream('apiLOG.log');
 var myLogger= new console.Console(access,access);
-module.exports.myLogger= myLogger;
+export default myLogger;
 
 
 // Connect to MongoDB with Mongoose.
