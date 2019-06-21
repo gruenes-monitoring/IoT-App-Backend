@@ -29,6 +29,7 @@ mongoose
 const PORT = 4000;
 const server = express();
 
+server.use('*', cors({ origin: '*' }));
 server.use('/graphql', bodyParser.json(), graphqlExpress({
   schema
 }));
