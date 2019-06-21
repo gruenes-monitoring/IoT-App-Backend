@@ -8,6 +8,8 @@ export default {
   Query: {
 
     measurementQuery: (root, args) => {
+      console.log("measurementQuery "+Date.now());
+
       // Variablen fuer Querys die das Datum benutzen
       let after = false;
       let before = false;
@@ -45,7 +47,8 @@ export default {
               if (res[i] != undefined && res[i].Timestamp > endDate) delete res[i];
             }
           }
-
+          if (err!=null) console.error("measurmentQuery Error "+err+" "+Date.now());
+          else console.log("measurementQuery res "+res+" "+Date.now());
           err ? reject(err) : resolve(res);
         });
       });
@@ -54,10 +57,13 @@ export default {
   },
   Mutation: {
     addMeasurement: (root, { DeviceID, Timestamp, Temperature, Humidity, Brightness }) => {
+      console.log("addMeasurement "+Date.now());
       const newMeasurement = new Measurement({ DeviceID, Timestamp, Temperature, Humidity, Brightness });
       pubsub.publish(TOPIC, { measurementAdded: newMeasurement, DeviceID: DeviceID, Temperature: Temperature, Humidity: Humidity, Brightness: Brightness });
       return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
+          if (err!=null) console.error("addMeasurement Error "+err+" "+Date.now());
+          else console.log("addMeasurement res "+res+" "+Date.now());
           err ? reject(err) : resolve(res);
         });
       });
@@ -68,6 +74,7 @@ export default {
       subscribe: withFilter(
         () => pubsub.asyncIterator(TOPIC),
         (payload, variables) => {
+          console.log("Subscription "+TOPIC+" "+payload+" "+Date.now());        
           return payload.DeviceID === variables.DeviceID &&
             (variables.MaxTemperature == undefined && variables.MinTemperature == undefined && variables.MaxBrightness == undefined && variables.MinBrightness == undefined && variables.MaxHumidity == undefined && variables.MinHumidity == undefined)
             ||

@@ -14,6 +14,12 @@ import mongoose from "mongoose";
 const db = "mongodb://127.0.0.1:27017/test";
 const ip= "40.89.134.226";
 
+var access = fs.createWriteStream('apiLOG.log');
+process.stdout.write = process.stderr.write = access.write.bind(access);
+
+
+
+
 // Connect to MongoDB with Mongoose.
 mongoose
   .connect(
@@ -23,7 +29,7 @@ mongoose
       useNewUrlParser: true
     }
   )
-  .then(() => console.log("MongoDB connected"))
+  .then(() => console.log("MongoDB connected"+Date.now()))
   .catch(err => console.log(err));
 
 const PORT = 4000;
@@ -43,7 +49,7 @@ subscriptionsEndpoint: `ws://${ip}:${PORT}/subscriptions`
 const ws = createServer(server);
 
 ws.listen(PORT, () => {
-  console.log(`GraphQL Server is now running on http://${ip}:${PORT}`);
+  console.log(`GraphQL Server is now running on http://${ip}:${PORT}`+" "+Date.now());
 
   // Set up the WebSocket for handling GraphQL subscriptions
   new SubscriptionServer({
