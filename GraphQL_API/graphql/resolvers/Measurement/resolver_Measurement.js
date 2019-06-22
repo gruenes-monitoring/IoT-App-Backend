@@ -80,10 +80,10 @@ export default {
       subscribe: withFilter(
         () => pubsub.asyncIterator(TOPIC),
         (payload, variables) => {
-          myLogger.warn("MEASUREMENT");
-          myLogger.group();
-          myLogger(new Date(Date.now())+" publish Subscription "+TOPIC);
-          myLogger.groupEnd();        
+         myLogger.log("Subscription");
+        myLogger.group();
+        myLogger.log(new Date(Date.now())+" publish Subscription");
+        myLogger.groupEnd();        
           return payload.DeviceID === variables.DeviceID &&
             (variables.MaxTemperature == undefined && variables.MinTemperature == undefined && variables.MaxBrightness == undefined && variables.MinBrightness == undefined && variables.MaxHumidity == undefined && variables.MinHumidity == undefined)
             ||
