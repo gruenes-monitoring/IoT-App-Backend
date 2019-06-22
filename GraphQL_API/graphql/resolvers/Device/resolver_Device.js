@@ -4,7 +4,7 @@ import myLogger from "../../../index";
 export default {
   Query: {
     deviceQuery: (root, args) => { 
-      myLogger.console.warn("DEVICE");      
+      myLogger.warn("DEVICE");      
       myLogger.group();
       myLogger.log(new Date(Date.now())+" receive deviceQuery");
       return new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ export default {
   Mutation: {
     addDevice: (root, { Description, Country, City, Address, Building, Floor, Room, Latitude, Longitude, Active }) => {
       myLogger.group();
-      myLogger.console.warn("DEVICE");
+      myLogger.warn("DEVICE");
       myLogger.log(new Date(Date.now())+" receive addDevice");
       const newDevice = new Device({ Description, Country, City, Address, Building, Floor, Room, Latitude, Longitude, Active });
       return new Promise((resolve, reject) => {     

@@ -8,7 +8,7 @@ export default {
   Query: {
 
     measurementQuery: (root, args) => {
-      myLogger.console.warn("MEASUREMENT");
+      myLogger.warn("MEASUREMENT");
       myLogger.group();
       myLogger.log(new Date(Date.now())+" receive measurementQuery");
 
@@ -60,7 +60,7 @@ export default {
   },
   Mutation: {
     addMeasurement: (root, { DeviceID, Timestamp, Temperature, Humidity, Brightness }) => {
-      myLogger.console.warn("MEASUREMENT");
+      myLogger.warn("MEASUREMENT");
       myLogger.group();
       myLogger.log(new Date(Date.now())+" receive addMeasurement ");
       const newMeasurement = new Measurement({ DeviceID, Timestamp, Temperature, Humidity, Brightness });
@@ -80,7 +80,7 @@ export default {
       subscribe: withFilter(
         () => pubsub.asyncIterator(TOPIC),
         (payload, variables) => {
-          myLogger.console.warn("MEASUREMENT");
+          myLogger.warn("MEASUREMENT");
           myLogger.group();
           myLogger(new Date(Date.now())+" publish Subscription "+TOPIC);
           myLogger.groupEnd();        
