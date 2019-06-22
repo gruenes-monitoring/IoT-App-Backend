@@ -51,7 +51,7 @@ const ws = createServer(server);
 
 ws.listen(PORT, () => {
   console.log(`GraphQL Server is now running on http://${ip}:${PORT}`);
-  myLogger.log("Server started "+Date.now());
+  myLogger.log(new Date(Date.now())+" Server started");
   // Set up the WebSocket for handling GraphQL subscriptions
   new SubscriptionServer({
     execute,

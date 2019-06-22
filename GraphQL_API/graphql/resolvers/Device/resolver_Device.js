@@ -4,11 +4,13 @@ import myLogger from "../../../index";
 export default {
   Query: {
     deviceQuery: (root, args) => { 
-      myLogger.log("deviceQuery "+args+" ",Date.now());
+      myLogger.group();
+      myLogger.log(new Date(Date.now())+" receive deviceQuery");
       return new Promise((resolve, reject) => {
         Device.find(args).exec((err, res) => {
-          if (err!=null)  myLogger.error("deviceQuery Error "+err+" "+Date.now());
-          else  myLogger.log("deviceQuery res "+res+" "+Date.now());
+          if (err!=null)  myLogger.error(new Date(Date.now())+" deviceQuery Error "+err);
+          else  myLogger.log(new Date(Date.now())+" succesfully finished deviceQuery");
+          myLogger.groupEnd();
           err ? reject(err) : resolve(res);
         });
       });
@@ -16,12 +18,14 @@ export default {
   },
   Mutation: {
     addDevice: (root, { Description, Country, City, Address, Building, Floor, Room, Latitude, Longitude, Active }) => {
-      myLogger.log("addDeive "+Date.now());
+      myLogger.group();
+      myLogger.log(new Date(Date.now())+" receive addDevice");
       const newDevice = new Device({ Description, Country, City, Address, Building, Floor, Room, Latitude, Longitude, Active });
       return new Promise((resolve, reject) => {     
         newDevice.save((err, res) => {
-          if (err!=null)  myLogger.error("addDevice Error "+err+" "+Date.now());
-          else  myLogger.log("addDevice res "+res+" "+Date.now());
+          if (err!=null)  myLogger.error(new Date(Date.now())+" addDevice Error");
+          else  myLogger.log(new Date(Date.now())+" succesfully added Device");
+          myLogger.groupEnd();
           err ? reject(err) : resolve(res);
         });
       });

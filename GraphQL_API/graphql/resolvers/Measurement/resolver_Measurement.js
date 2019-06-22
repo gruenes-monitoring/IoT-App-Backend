@@ -8,7 +8,8 @@ export default {
   Query: {
 
     measurementQuery: (root, args) => {
-      myLogger.log("measurementQuery "+Date.now());
+      myLogger.group();
+      myLogger.log(new Date(Date.now())+" receive measurementQuery");
 
       // Variablen fuer Querys die das Datum benutzen
       let after = false;
@@ -47,8 +48,9 @@ export default {
               if (res[i] != undefined && res[i].Timestamp > endDate) delete res[i];
             }
           }
-          if (err!=null) myLogger.error("measurmentQuery Error "+err+" "+Date.now());
-          else myLogger.log("measurementQuery res "+res+" "+Date.now());
+          if (err!=null) myLogger.error(new Date(Date.now())+" measurmentQuery Error "+err);
+          else myLogger.log(new Date(Date.now())+" succesfully finished measurementQuery");
+          myLogger.groupEnd();
           err ? reject(err) : resolve(res);
         });
       });
@@ -57,13 +59,15 @@ export default {
   },
   Mutation: {
     addMeasurement: (root, { DeviceID, Timestamp, Temperature, Humidity, Brightness }) => {
-      myLogger.log("addMeasurement "+Date.now());
+      myLogger.group();
+      myLogger.log(new Date(Date.now())+" receive addMeasurement ");
       const newMeasurement = new Measurement({ DeviceID, Timestamp, Temperature, Humidity, Brightness });
       pubsub.publish(TOPIC, { measurementAdded: newMeasurement, DeviceID: DeviceID, Temperature: Temperature, Humidity: Humidity, Brightness: Brightness });
       return new Promise((resolve, reject) => {
         newMeasurement.save((err, res) => {
-          if (err!=null) myLogger.error("addMeasurement Error "+err+" "+Date.now());
-          else myLogger.log("addMeasurement res "+res+" "+Date.now());
+          if (err!=null) myLogger.error(new Date(Date.now())+"addMeasurement Error "+err);
+          else myLogger.log(new Date(Date.now())+" succesfully added Measurement");
+          myLogger.groupEnd();
           err ? reject(err) : resolve(res);
         });
       });
@@ -74,7 +78,7 @@ export default {
       subscribe: withFilter(
         () => pubsub.asyncIterator(TOPIC),
         (payload, variables) => {
-          myLogger.log("Subscription "+TOPIC+" "+payload+" "+Date.now());        
+          myLogger.log(new Date(Date.now())+" publish Subscription "+TOPIC);        
           return payload.DeviceID === variables.DeviceID &&
             (variables.MaxTemperature == undefined && variables.MinTemperature == undefined && variables.MaxBrightness == undefined && variables.MinBrightness == undefined && variables.MaxHumidity == undefined && variables.MinHumidity == undefined)
             ||
