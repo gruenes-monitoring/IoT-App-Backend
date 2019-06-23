@@ -1,6 +1,40 @@
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello Travis!\n');
-}).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+//const Measurement = require('./mqtt_client/measurement.js');
+const Device = require('./mqtt_client/device.js');
+const GraphQL_Interface = require('./mqtt_client/graphql_interface.js');
+var mqtt = require('mqtt');
+
+const ipBroker = 'mqtt://40.89.163.191:1883';
+const ipGraphQL = 'http://40.89.134.226:4000/graphql';
+
+try {
+	GraphQL_Interface.init(ipGraphQL);
+} catch (Ex) {
+	console.log("GraphQL-API unter IP: " + ipGraphQL + " nicht erreichbar. Fehlermeldung: " + Ex);
+}
+
+try {
+	var client  = mqtt.connect(ipBroker);
+	if(client.connected) {
+		client.on('connect', function () {
+		  client.subscribe('#'); 
+		});
+		 
+		client.on('message', function (topic, payload) {
+		  var device;
+		  console.log(topic.toString() + ':   ' + payload.toString());
+		  try {
+			device = new Device(topic);
+		  } catch(Ex) {
+			console.log(Ex);
+		  }
+		  if(device) {
+			var message = JSON.parse(payload);
+			GraphQL_Interface.doInsert(device, message);
+		  }
+		});
+	} else {
+		console.log("Broker unter IP: " + ipBroker + " nicht erreichbar.");
+	}
+} catch (Ex) {
+	console.log("Broker unter IP: " + ipBroker + " nicht erreichbar. Fehlermeldung: " + Ex);
+}
