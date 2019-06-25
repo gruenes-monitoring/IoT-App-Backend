@@ -84,7 +84,7 @@ export default {
         myLogger.group();
         myLogger.log(new Date(Date.now())+" publish Subscription");
         myLogger.groupEnd();        
-          return payload.DeviceID === variables.DeviceID &&
+          return payload.DeviceID === payload.DeviceID==variables.DeviceID &&
             (variables.MaxTemperature == undefined && variables.MinTemperature == undefined && variables.MaxBrightness == undefined && variables.MinBrightness == undefined && variables.MaxHumidity == undefined && variables.MinHumidity == undefined)
             ||
             ((payload.Temperature != undefined && variables.MaxTemperature != undefined && payload.Temperature > variables.MaxTemperature)
