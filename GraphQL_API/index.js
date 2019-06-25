@@ -1,13 +1,25 @@
-import express from "express";
-import expressGraphQL from "express-graphql";
+import express from 'express';
+import {
+  graphqlExpress,
+  graphiqlExpress,
+} from 'graphql-server-express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import schema  from './graphql/schema';
+import { execute, subscribe } from 'graphql';
+import { createServer } from 'http';
+import { SubscriptionServer } from 'subscriptions-transport-ws';
 import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import cors from "cors";
-import schema from "./graphql/schema";
 
-const app = express();
-const PORT = process.env.PORT || "4000";
 const db = "mongodb://127.0.0.1:27017/test";
+const ip= "40.89.134.226";
+
+//Logger 
+var fs= require('fs');
+var access = fs.createWriteStream('apiLOG.log');
+var myLogger= new console.Console(access,access);
+export default myLogger;
+
 
 // Connect to MongoDB with Mongoose.
 mongoose
@@ -21,19 +33,32 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
-app.use(
-  "/graphql",
-  cors(),
-  bodyParser.json(),
-  expressGraphQL({
-    schema,
-    graphiql: true
-  })
-);
+const PORT = 4000;
+const server = express();
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server.use('*', cors({ origin: '*' }));
+server.use('/graphql', bodyParser.json(), graphqlExpress({
+  schema
+}));
 
+server.use('/graphiql', graphiqlExpress({
+  endpointURL: '/graphql',
+subscriptionsEndpoint: `ws://${ip}:${PORT}/subscriptions`
+}));
 
+// We wrap the express server so that we can attach the WebSocket for subscriptions
+const ws = createServer(server);
 
-
-
+ws.listen(PORT, () => {
+  console.log(`GraphQL Server is now running on http://${ip}:${PORT}`);
+  myLogger.log(new Date(Date.now())+" Server started");
+  // Set up the WebSocket for handling GraphQL subscriptions
+  new SubscriptionServer({
+    execute,
+    subscribe,
+    schema
+  }, {
+      server: ws,
+      path: '/subscriptions',
+    });
+});
