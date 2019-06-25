@@ -45,7 +45,7 @@
 
 **Wetterstation**
 
-Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur, Luftfeuchtigkeit o.ä. gemessen werden. Die erfassten Daten werden daraufhin gespeichert, ausgewertet, plattformunabhängig visualisiert und online dargestellt. Die Standorte werden hierarchisch in Gebäude, Stockwerke und Räume unterteilt oder gruppiert. Es sollen des weiteren Grenzwerte konfigurierbar sein und bei Überschreitung dieser der Benutzer benachrichtigt werden.
+Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur, Luftfeuchtigkeit o.ä. gemessen werden. Die erfassten Daten werden daraufhin gespeichert, ausgewertet, plattformunabhängig visualisiert und online dargestellt. Die Standorte werden hierarchisch in Gebäude, Stockwerke und Räume unterteilt oder gruppiert. Es sollen des Weiteren Grenzwerte konfigurierbar sein und bei Überschreitung dieser der Benutzer benachrichtigt werden.
 
 ## 1.2 Ziele
 
@@ -57,11 +57,11 @@ Im Zuge dieses Projekts sollen an mehreren Standorten Wetterdaten wie Temperatur
 
 ## 2.1 Stakeholder
 
-| Funktion      | Name                | Kontakt                    | Verfügbarkeit | Wissen                                   | Interesse & Ziele                        | Relevanz  |
-| ------------- | ------------------- | -------------------------- | ------------- | ---------------------------------------- | ---------------------------------------- | --------- |
-| Administrator | Herr Router         | 127.0.0.1                  | 60%           | Kennt die Infrastruktur. Soll das System in stand halten | Einfache Administration des System.      | Hoch      |
-| Benutzer      | Frau Dr. Raum-Klima | 0800 Nase                  | 70%           | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System Bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Integrität | Sehr Hoch |
-| Benutzer      | Thomas Müller       | tmueller14@fh-bielefeld.cz | 20%           | Wenig.                                   | Daten sollen auch für ihn als Laien übersichtlich dargestellt werden. | Mittel    |
+| Funktion      | Name                | Kontakt                    | Verfügbarkeit | Wissen                                                       | Interesse & Ziele                                            | Relevanz  |
+| ------------- | ------------------- | -------------------------- | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- |
+| Administrator | Herr Router         | 127.0.0.1                  | 60%           | Kennt die Infrastruktur. Soll das System in stand halten     | Einfache Administration des System.                          | Hoch      |
+| Benutzer      | Frau Dr. Raum-Klima | 0800 Nase                  | 70%           | Fachkenntnisse. Wertet Ergebnisse aus. Soll das System bedienen. | Einfache Bedienbarkeit, Übersichtlich, Zuverlässigkeit, Integrität | Sehr Hoch |
+| Benutzer      | Thomas Müller       | tmueller14@fh-bielefeld.cz | 20%           | Wenig.                                                       | Daten sollen auch für ihn als Laien übersichtlich dargestellt werden. | Mittel    |
 
 ## 2.2 Funktionale Anforderungen
 
