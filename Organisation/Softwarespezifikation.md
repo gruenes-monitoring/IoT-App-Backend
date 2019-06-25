@@ -13,29 +13,31 @@
   * [Backend Repo](<https://github.com/jraddatz/IoT-App-Backend>)
   * [WebFrontend Repo](<https://github.com/FranNk3/IoT-App-WebFrontend>)
   * [MobileFrontend Repo](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
+  * [WebGL Modul Repo](https://github.com/draeder94/IoT-Wetterstation-WebGL-Module)
 
-
-**Inhaltsverzeichnis** 
-
-- [Einführung](#1 Einführung)
-  - [Beschreibung](#1.1 Beschreibung)
-  - [Ziele](#1.2 Ziele)
-- [Anforderungen](#2 Anforderungen)
-  - [Stakeholder](#2.1 Stakeholder)
-  - [Anforderungen](#2 Anforderungen)
-  - [Funktionale Anforderungen](#2.2 Funktionale Anforderungen)
-  - [Nicht-funktionale Anforderungen](#2.3 Nicht-funktionale Anforderungen)]
-  - [GUI](#2.4 Graphische Benutzerschnittstelle)
-- [Technische Beschreibung](#3 Technische Beschreibung)
-  - [Systemübersicht](#3.1 Systemübersicht)
-  - [Softwarearchitektur](#3.2 Softwarearchitektur)
-  - [Datenmodell](#3.3 Datenmodell)
-  - [Abläufe](#3.4 Abläufe)
-- [Projektorganisation](#4 Projektorganisation)
-  - [Annahmen](#4.1 Annahmen)
-  - [Verantwortlichkeiten](#4.2 Verantwortlichkeiten)
-  - [Grober Projektplan](#4.3 Grober Projektplan)
-- [Anhänge](#5 Anhänge)
+- **Inhaltsverzeichnis** 
+  - Einführung
+    - Beschreibung
+    - Ziele
+  - Anforderungen
+    - Stakeholder
+    - Anforderungen
+    - Funktionale Anforderungen
+    - Nicht-funktionale Anforderungen
+    - GUI
+  - Technische Beschreibung
+    - Systemübersicht
+    - Softwarearchitektur
+    - Schnittstellen
+      - MQQT
+      - GraphQL
+    - Datenmodell
+    - Abläufe
+  - Projektorganisation
+    - Annahmen
+    - Verantwortlichkeiten
+    - Grober Projektplan
+  - Anhänge
 
 # 1 Einführung
 
@@ -179,6 +181,52 @@ Mit * gekennzeichnete Werte sind nicht verpflichtend.
 - humidity: Gleitkommazahl, in %
 - brightness: Gleitkommazahl, in Lux
 
+### GraphQL
+
+Die GraphQL Schnittstelle ist über http://40.89.134.226:4000/graphql erreichbar. <br/>GraphQL Subscriptions sind über ws://40.89.134.226:4000/subscriptions erreichbar. 
+
+#### GraphQL Schema
+```
+type Device{
+    _id: ID!
+    Country: String!
+    Address: String!
+    Building: String
+    Floor: Int
+    Room: String!
+    Latitude: String
+    Longitude: String
+    Active: Boolean!
+}
+
+type Measurement{
+    _id: ID!
+    DeviceID: ID!
+    Timestamp: String!
+    Temperature:Float
+    Humidity: Float
+    Brightness: Float
+}
+
+type Query {
+deviceQuery(_id: ID, Country: String, City: String, Address: String, Building: String, Floor: 	Int, Room: String, Latitude: String, Longitude: String, Active: Boolean): [Device]
+
+measurementQuery(DeviceID: ID!, startDate: String, endDate: String): [Measurement]
+}
+
+type mutation{
+addDevice(Country: String!,Address: String!,Building:String,Floor Int, Latitude: String, Longitude: String, Active: Boolean!): Device
+
+addMeasurement( DeviceID: ID!, Timestamp: String!, Temperature: Float, Humidity: Float, Brightness: Float): Measurement    
+}
+
+type Subscription {
+measurementAdded(DeviceID: ID!, MaxTemperature: Float, MinTemperature: Float, MaxHumidity: Float, MaxHumidity: Float, MaxBrightness: Float, MinBrightness: Float): Measurement
+}
+```
+
+
+
 ## 3.4 Datenmodell 
 
 ![](./img/Datenbank.png)
@@ -220,31 +268,32 @@ Git Repositories:
 - [Backend Repository & Dokumentation](https://github.com/jraddatz/IoT-App-Backend)
 - [Mobile Frontend Repository](https://github.com/ChamounInfo/IoT-App-MobileFrontend)
 - [Web Frontend Respository](https://github.com/FranNk3/IoT-App-WebFrontend)
+- [WebGL Modul Repo](https://github.com/draeder94/IoT-Wetterstation-WebGL-Module)
 
 
 
 ## 4.2 Verantwortlichkeiten
-| Softwarebaustein      | Person(en)      |
-| --------------------- | --------------- |
-| Datenbank             | André Matutat   |
-| GraphQL Schnittstelle | André Matutat   |
-| MQTT                  | Jonas Raddatz   |
-| Raspberry Pi          | Jonas Raddatz   |
-| Backend               | Jonas Raddatz   |
-| Browser Frontend      | Dejan Novakovic |
-| WebGL                 | Daniel Räder    |
-| Mobile Frontend       | Simon Safar     |
+| Softwarebaustein      | Person(en)                      |
+| --------------------- | ------------------------------- |
+| Datenbank             | André Matutat und Jonas Raddatz |
+| GraphQL Schnittstelle | André Matutat                   |
+| MQTT                  | Jonas Raddatz                   |
+| Raspberry Pi          | Jonas Raddatz und Daniel Räder  |
+| Backend               | Jonas Raddatz und André Matutat |
+| Web Frontend          | Dejan Novakovic                 |
+| WebGL                 | Daniel Räder                    |
+| Mobile Frontend       | Simon Safar                     |
 
 
 ### Rollenzuordnung
 
-| Name            | Rolle                                 |
-| --------------- | ------------------------------------- |
-| André Matutat   | Backend-Entwickler, Softwarearchitekt |
-| Jonas Raddatz   | Backend-Entwickler, Softwarearchitekt |
-| Dejan Novakovic | Frontend-Entwickler                   |
-| Daniel Räder    | Frontend-Entwickler                   |
-| Simon Safar     | Frontend-Entwickler                   |
+| Name            | Rolle                                  |
+| --------------- | -------------------------------------- |
+| André Matutat   | Backend-Entwickler, Softwarearchitekt  |
+| Jonas Raddatz   | Backend-Entwickler, Softwarearchitekt  |
+| Dejan Novakovic | Frontend-Entwickler                    |
+| Daniel Räder    | Frontend-Entwickler, Softwarearchitekt |
+| Simon Safar     | Frontend-Entwickler                    |
 
 
 
@@ -298,7 +347,3 @@ GraphQL ist eine, von Facebook entwickelte, opensource Abfragesprache, dessen Fo
 
 ### WebGL
 WebGL ist eine 3D Grafik API basierend auf OpenGL (genauer, OpenGL ES, für Embedded Systems). Die API ist für Verwendung in Javascript/ECMAScript in HTML5 gedacht und somit für alle Platformen die HTML5 unterstützen verfügbar.Mit WebGL gerenderte Elemente werden im HTML Canvas Element dargestellt, mit Hilfe eines eigens definierten RenderingContext, WebGLRenderingContext, welcher den standardmäßigen CanvasRenderingContext2D ersetzt.
-
-## 5.2 Referenzen
-
-## 5.3 Index
