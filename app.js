@@ -14,27 +14,24 @@ try {
 
 try {
 	var client  = mqtt.connect(ipBroker);
-	if(client.connected) {
-		client.on('connect', function () {
-		  client.subscribe('#'); 
-		});
-		 
-		client.on('message', function (topic, payload) {
-		  var device;
-		  console.log(topic.toString() + ':   ' + payload.toString());
-		  try {
-			device = new Device(topic);
-		  } catch(Ex) {
-			console.log(Ex);
-		  }
-		  if(device) {
-			var message = JSON.parse(payload);
-			GraphQL_Interface.doInsert(device, message);
-		  }
-		});
-	} else {
-		console.log("Broker unter IP: " + ipBroker + " nicht erreichbar.");
-	}
+	
+	client.on('connect', function () {
+	  client.subscribe('#'); 
+	});
+	 
+	client.on('message', function (topic, payload) {
+	  var device;
+	  console.log(topic.toString() + ':   ' + payload.toString());
+	  try {
+		device = new Device(topic);
+	  } catch(Ex) {
+		console.log(Ex);
+	  }
+	  if(device) {
+		var message = JSON.parse(payload);
+		GraphQL_Interface.doInsert(device, message);
+	  }
+	});
 } catch (Ex) {
 	console.log("Broker unter IP: " + ipBroker + " nicht erreichbar. Fehlermeldung: " + Ex);
 }
