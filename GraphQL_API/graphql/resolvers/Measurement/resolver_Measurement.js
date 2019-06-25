@@ -80,19 +80,20 @@ export default {
       subscribe: withFilter(
         () => pubsub.asyncIterator(TOPIC),
         (payload, variables) => {
-         myLogger.log("Subscription");
-        myLogger.group();
-        myLogger.log(new Date(Date.now())+" publish Subscription");
-        myLogger.groupEnd();       
+         myLogger.log("Subscription");	
+         myLogger.group();
+         myLogger.log(new Date(Date.now())+" publish Subscription");
+         myLogger.groupEnd();       
 
           return ((payload.DeviceID === variables.DeviceID) &&
-            ((variables.MaxTemperature === undefined && variables.MinTemperature === undefined && variables.MaxBrightness === undefined && variables.MinBrightness == undefined && variables.MaxHumidity == undefined && variables.MinHumidity == undefined)
+            ((variables.MaxTemperature === undefined && variables.MinTemperature === undefined && variables.MaxBrightness === undefined && variables.MinBrightness === undefined && variables.MaxHumidity === undefined && variables.MinHumidity === undefined)
             ||
             ((payload.Temperature != undefined && variables.MaxTemperature != undefined && payload.Temperature > variables.MaxTemperature)
               || (payload.Temperature != undefined && variables.MinTemperature != undefined && payload.Temperature < variables.MinTemperature))
             ||
-            ((payload.Humidity != undefined && variables.MaxHumidity === undefined || payload.Humidity > variables.MaxHumidity)
-              || (payload.Humidity != undefined && variables.MinHumidity === undefined || payload.Humidity < variables.MinHumidity))
+		    
+            ((payload.Humidity != undefined && variables.MaxHumidity != undefined || payload.Humidity > variables.MaxHumidity)
+              || (payload.Humidity != undefined && variables.MinHumidity != undefined || payload.Humidity < variables.MinHumidity))
             ||
             ((payload.Brightness != undefined && variables.MaxBrightness != undefined && payload.Brightness > variables.MaxBrightness)
               || (payload.Brightness != undefined && variables.MinBrightness != undefined && payload.Brightness < variables.MinBrightness))
