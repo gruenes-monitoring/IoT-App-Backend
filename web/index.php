@@ -27,6 +27,10 @@
             width: 50%
         }
 
+        td.button_cell {
+            text-align: center;
+        }
+
         #config_table tr td input {
             width: 80%;
         }
@@ -57,10 +61,9 @@
                     console.log(data);
                     config = JSON.parse(data);
                     config["_keys"].forEach(key => {
-                        console.log("loading cfg option: " + key);
                         table.append(`<tr><td>${config[key + "_desc"]}</td><td>${buildInput(config[key + "_type"], key, config[key])}</td></tr>`);
                     });
-                    table.append('<tr><td colspan=2><input type="submit" value="Speichern"/></td></tr>');
+                    table.append('<tr><td class="button_cell" colspan=2><input type="submit" value="Speichern"/></td></tr>');
                 }
             });
 
@@ -73,19 +76,19 @@
             //document.getElementById('config_form').onsubmit = function (evt) {
             config_form.submit(function (evt) {
                 let dataArray = config_form.serializeArray();
-                console.log("saving");
-                console.log(dataArray);
                 evt.preventDefault();
                 dataArray.forEach(object => {
                     config[object.name] = object.value;
                 });
-                console.log(config);
                 $.ajax({
                     type: 'POST',
                     url: './saveConfig.php',
                     data: config,
                     success: function (d) {
-                        alert(d);
+                        if (d === "true")
+                            alert("Konfiguration wurde gespeichert.");
+                        else
+                            alert("Konfiguration konnte nicht gespeichert werden.");
                     }
                 });
             });
