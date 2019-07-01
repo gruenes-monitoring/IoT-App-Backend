@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 import os, sys, getopt
+if __name__ == "__main__":
+    sys.path.append(os.getcwd())
+    sys.path.append("/home/pi/.local/lib/python2.7/site-packages")
 import json, time, keyboard
 import logging
 from logging.handlers import RotatingFileHandler

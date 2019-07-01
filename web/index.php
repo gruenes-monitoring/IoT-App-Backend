@@ -56,7 +56,7 @@
                 url: './startstop.php',
                 data: {start: true},
                 success: function (d) {
-                    alert("Start!\n"+d);
+                    alert("Green Monitoring wurde gestartet.");
                 }
             });
         }
@@ -68,7 +68,7 @@
                 url: './startstop.php',
                 data: {stop: true},
                 success: function (d) {
-                    alert("Stop!\n"+d);
+                    alert("Green Monitoring wurde gestoppt.");
                 }
             });
         }
