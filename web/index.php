@@ -49,6 +49,30 @@
     </style>
     <script src="jquery-3.4.0.min.js"></script>
     <script>
+        function startButton() {
+            console.log("start button clicked");
+            $.ajax({
+                type: 'POST',
+                url: './startstop.php',
+                data: {start: true},
+                success: function (d) {
+                    alert("Start!\n"+d);
+                }
+            });
+        }
+
+        function stopButton() {
+            console.log("stop button clicked");
+            $.ajax({
+                type: 'POST',
+                url: './startstop.php',
+                data: {stop: true},
+                success: function (d) {
+                    alert("Stop!\n"+d);
+                }
+            });
+        }
+
         $(document).ready(function () {
             const config_form = $("#config_form");
             const table = $("#config_table");
@@ -64,6 +88,7 @@
                         table.append(`<tr><td>${config[key + "_desc"]}</td><td>${buildInput(config[key + "_type"], key, config[key])}</td></tr>`);
                     });
                     table.append('<tr><td class="button_cell" colspan=2><input type="submit" value="Speichern"/></td></tr>');
+                    table.append('<tr><td class="button_cell"><input id="buttonStart" type="button" value="Start" onclick="startButton()"/></td><td class="button_cell"><input id="buttonStop" type="button" value="Stop" onclick="stopButton()"/></td></tr>');
                 }
             });
 
@@ -73,7 +98,6 @@
                 return `<input type="${type}" name="${name}" value="${value}"/>`
             }
 
-            //document.getElementById('config_form').onsubmit = function (evt) {
             config_form.submit(function (evt) {
                 let dataArray = config_form.serializeArray();
                 evt.preventDefault();
