@@ -56,7 +56,10 @@
                 url: './startstop.php',
                 data: {start: true},
                 success: function (d) {
-                    alert("Green Monitoring wurde gestartet.");
+                    if (d.startsWith("Running already"))
+                        alert("Green Monitoring ist bereits aktiv.");
+                    else
+                        alert("Green Monitoring wurde gestartet.");
                 }
             });
         }
