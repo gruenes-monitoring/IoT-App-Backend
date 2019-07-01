@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import os, sys, getopt
+import os, sys, getopt, signal
 if __name__ == "__main__":
     sys.path.append(os.getcwd())
     sys.path.append("/home/pi/.local/lib/python2.7/site-packages")
@@ -159,6 +159,12 @@ def getLight():
 def limitFloatDecimals(f):
     return int((f * 100) + 0.5) / 100.0
 
+def quit(signum, frame):
+    stopMQTT()
+    log("\nProgram terminated. Good bye!")
+    logging.shutdown()
+    sys.exit()
+
 def mainLoop():
     while True:
         if config.checkUpdate():
@@ -179,6 +185,7 @@ def mainLoop():
         time.sleep(config.interval)
 
 if __name__ == "__main__":
+    signal.signal(signal.SIGINT, quit)
     launchArgs(sys.argv)
     log("")
     log("===============================================")
@@ -201,7 +208,5 @@ if __name__ == "__main__":
         log("Beginning Main Loop")
         mainLoop()
     except KeyboardInterrupt:
-        stopMQTT()
-        log("\nProgram terminated. Good bye!")
-        logging.shutdown()
+        quit(9,0)
         pass
