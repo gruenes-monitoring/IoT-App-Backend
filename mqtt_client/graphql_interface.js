@@ -58,7 +58,8 @@ class GraphQL_Interface {
 	
 	static insertMeasurement(device, message) {
 		if(message.measurement) {
-			var mutation = "mutation {addMeasurement(Timestamp: \"" + new Date(message.measurement.timestamp) + "\", DeviceID: \"" + device.id + "\", Temperature: " + message.measurement.temperature + ", Humidity: " + message.measurement.humidity + ", Brightness: " + message.measurement.brightness + ") { _id } }";
+			console.log("Measurement einfügen:\n  Timestamp: " + new Date(message.measurement.timestamp*1000) + ",\n  DeviceID: " + device.id + ",\n  Temperature: " + message.measurement.temperature + ",\n  Humidity: " + message.measurement.humidity + ",\n  Brightness: " + message.measurement.brightness);
+			var mutation = "mutation {addMeasurement(Timestamp: \"" + message.measurement.timestamp + "\", DeviceID: \"" + device.id + "\", Temperature: " + message.measurement.temperature + ", Humidity: " + message.measurement.humidity + ", Brightness: " + message.measurement.brightness + ") { _id } }";
 			console.log(mutation);
 
 			this.fetch({
